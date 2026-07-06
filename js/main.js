@@ -23,6 +23,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- Выпадающее меню "Услуги" ---------- */
+  // На десктопе меню раскрывается по наведению (CSS), клик нужен для тач-устройств
+  // и клавиатуры; в мобильной панели меню всегда раскрыто (CSS), клик безвреден.
+  var navGroups = document.querySelectorAll('.nav__group');
+  navGroups.forEach(function (group) {
+    var toggle = group.querySelector('.nav__toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      var open = group.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  // Закрывать раскрытые группы при клике вне них
+  document.addEventListener('click', function (e) {
+    navGroups.forEach(function (group) {
+      if (group.classList.contains('is-open') && !group.contains(e.target)) {
+        group.classList.remove('is-open');
+        var t = group.querySelector('.nav__toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
   /* ---------- Модалка "Рассчитать стоимость" ---------- */
   var modal = document.getElementById('calc-modal');
 
@@ -90,6 +114,14 @@ document.addEventListener('DOMContentLoaded', function () {
   var path = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav a').forEach(function (a) {
     var href = a.getAttribute('href');
-    if (href === path) a.classList.add('is-active');
+    if (href === path) {
+      a.classList.add('is-active');
+      // Если активна страница услуги — подсветить и родительский пункт "Услуги"
+      var group = a.closest('.nav__group');
+      if (group) {
+        var toggle = group.querySelector('.nav__toggle');
+        if (toggle) toggle.classList.add('is-active');
+      }
+    }
   });
 });
