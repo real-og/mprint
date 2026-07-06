@@ -584,6 +584,10 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   transition: border-color .15s, transform .15s, background .15s;
 }
 .messengers a:hover { border-color: var(--graphite); transform: translateY(-2px); }
+/* В подвале общий .footer a делает ссылки светлыми — возвращаем тёмный текст
+   пилюлям мессенджеров, иначе светлый текст на светлом фоне нечитаем */
+.footer .messengers a { color: var(--text); }
+.footer .messengers a:hover { color: var(--text); border-color: var(--graphite); }
 
 /* ---------- Service page hero ---------- */
 .page-hero {
