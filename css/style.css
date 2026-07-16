@@ -281,8 +281,8 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .hero__inner {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
-  gap: 48px;
+  grid-template-columns: minmax(0, 500px) minmax(0, 1fr);
+  gap: 28px;
   align-items: center;
   padding: 104px 0 112px;
 }
@@ -292,7 +292,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 .hero__image img {
   width: 100%;
-  max-width: 620px;
+  max-width: 900px;
   height: auto;
   display: block;
 }
@@ -726,7 +726,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
    ============================================================ */
 @media (max-width: 1024px) {
   .hero__inner { grid-template-columns: 1fr; padding: 64px 0 72px; gap: 36px; }
-  .hero__image img { max-width: 480px; }
+  .hero__image img { max-width: 680px; }
   .hero__visual { aspect-ratio: 16/9; }
   .cards, .gallery { grid-template-columns: repeat(2, 1fr); }
   .cards--4 { grid-template-columns: repeat(2, 1fr); }
@@ -784,7 +784,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .cta { padding: 34px 26px; text-align: center; justify-content: center; }
   .cta__actions { width: 100%; }
   .hero__stats { gap: 24px; }
-  .hero__image img { max-width: 340px; }
+  .hero__image img { max-width: 100%; }
   .footer__grid { grid-template-columns: 1fr; gap: 26px; }
   .modal__box { padding: 28px 22px; }
 }
