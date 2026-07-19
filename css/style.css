@@ -792,7 +792,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   overflow: visible;
   border: none;
   background: transparent;
-  aspect-ratio: 7 / 3;
+  aspect-ratio: 4 / 3;
   /* прижать фото ровно к правому краю окна: компенсируем поле контейнера и его падинг */
   margin-right: min(-24px, calc((var(--container) - 100vw) / 2 - 24px));
 }
@@ -804,7 +804,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   object-fit: contain;
   pointer-events: none;
 
-  transform: scale(1.5);
+  transform: scale(1.6);
   transform-origin: right center;
 }
 
