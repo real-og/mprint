@@ -793,8 +793,8 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   border: none;
   background: transparent;
   aspect-ratio: 7 / 3;
-  /* прижать фото к правому краю окна, игнорируя отступ контейнера */
-  margin-right: calc(50% - 50vw);
+  /* прижать фото ровно к правому краю окна: компенсируем поле контейнера и его падинг */
+  margin-right: min(-24px, calc((var(--container) - 100vw) / 2 - 24px));
 }
 
 .hero__visual img {
@@ -804,7 +804,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   object-fit: contain;
   pointer-events: none;
 
-  transform: scale(3.1);
+  transform: scale(1.5);
   transform-origin: right center;
 }
 
