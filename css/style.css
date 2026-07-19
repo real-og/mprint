@@ -789,7 +789,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 .hero__visual {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border: none;
   background: transparent;
   aspect-ratio: 7 / 3;
@@ -800,7 +800,14 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   height: 100%;
   max-width: none;
   object-fit: contain;
+  pointer-events: none;
 
-  transform: scale(1.2);
+  transform: scale(3.6);
   transform-origin: right center;
+}
+
+/* Текст поверх увеличенного фото, кнопки кликабельны */
+.hero__inner > div:first-child {
+  position: relative;
+  z-index: 1;
 }
