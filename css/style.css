@@ -551,12 +551,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .direction-card:hover::before { transform: scale(1.18); opacity: .11; }
 .direction-card:hover h3 {
   color: var(--black);
-  text-shadow:
-    -1px -1px 0 rgba(255, 255, 255, .62),
-    1px -1px 0 rgba(255, 255, 255, .62),
-    -1px 1px 0 rgba(255, 255, 255, .62),
-    1px 1px 0 rgba(255, 255, 255, .62),
-    0 4px 14px rgba(20, 22, 26, .18);
+  text-shadow: 0 0 1px rgba(255, 255, 255, .78), 0 3px 12px rgba(20, 22, 26, .16);
 }
 .direction-card:hover .direction-card__arrow { transform: rotate(45deg); background: var(--graphite); border-color: var(--graphite); color: var(--white); }
 .direction-card:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
@@ -1056,9 +1051,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   content: "";
   position: absolute;
   z-index: 0;
-  inset: 9% -4% 10% 8%;
-  background: radial-gradient(ellipse at center, rgba(255, 210, 0, .55) 0%, rgba(255, 210, 0, .22) 42%, transparent 72%);
-  filter: blur(34px);
+  inset: -8% -20% -8% -12%;
+  background: radial-gradient(ellipse at center, rgba(255, 210, 0, .64) 0%, rgba(255, 210, 0, .28) 44%, transparent 74%);
+  filter: blur(48px);
   pointer-events: none;
 }
 
