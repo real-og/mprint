@@ -1,7 +1,0 @@
-# Локальные настройки Claude Code (содержат API-ключ и машинные права)
-.claude.settings.json
-.claude/
-
-# Системный мусор
-.DS_Store
-Thumbs.db
