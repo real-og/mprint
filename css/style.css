@@ -345,7 +345,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   z-index: 2;
   margin-top: -42px;
   padding: 0;
-  background: linear-gradient(to bottom, transparent 0 42px, var(--white) 42px);
+  background: linear-gradient(to bottom, transparent 0 42px, var(--gray-50) 42px);
 }
 
 #services { padding-top: 64px; }
@@ -1024,7 +1024,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .advantages {
     margin-top: -24px;
     padding: 0;
-    background: linear-gradient(to bottom, transparent 0 24px, var(--white) 24px);
+    background: linear-gradient(to bottom, transparent 0 24px, var(--gray-50) 24px);
   }
   #services { padding-top: 46px; }
   .advantages__grid { grid-template-columns: 1fr; }
