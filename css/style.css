@@ -460,7 +460,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .direction-card {
   position: relative;
   aspect-ratio: 1;
-  padding: 30px;
+  padding: 0 30px 30px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -472,6 +472,27 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   transition: transform .28s var(--ease), background-color .28s var(--ease), border-color .28s var(--ease), box-shadow .28s var(--ease);
 }
 #products .direction-card { background: var(--gray-50); }
+.direction-card__image {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 63%;
+  object-fit: cover;
+  filter: saturate(.84) contrast(.96);
+  transition: transform .38s var(--ease), filter .3s var(--ease), opacity .3s var(--ease);
+}
+.direction-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 56% 0 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--white) 23%);
+  transition: background .28s var(--ease);
+}
+#products .direction-card::after {
+  background: linear-gradient(to bottom, rgba(248, 249, 250, 0), var(--gray-50) 23%);
+}
 .direction-card::before {
   content: "";
   position: absolute;
@@ -489,7 +510,11 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   position: absolute;
   top: 28px;
   left: 30px;
-  color: var(--gray-400);
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: var(--white);
+  background: rgba(20, 22, 26, .74);
+  backdrop-filter: blur(6px);
   font-size: 13px;
   font-weight: 800;
   letter-spacing: .12em;
@@ -518,8 +543,10 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   border-color: var(--yellow);
   box-shadow: 0 20px 45px rgba(20, 22, 26, .15);
 }
+.direction-card:hover .direction-card__image { transform: scale(1.045); filter: saturate(.96) contrast(1); opacity: .88; }
+.direction-card:hover::after { background: linear-gradient(to bottom, rgba(255, 210, 0, 0), var(--yellow) 23%); }
 .direction-card:hover::before { transform: scale(1.18); opacity: .11; }
-.direction-card:hover .direction-card__num { color: rgba(20, 22, 26, .56); }
+.direction-card:hover .direction-card__num { color: var(--white); }
 .direction-card:hover .direction-card__arrow { transform: rotate(45deg); background: var(--graphite); border-color: var(--graphite); color: var(--white); }
 .direction-card:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
 
@@ -559,6 +586,17 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   border: 1px solid var(--gray-100);
   border-radius: var(--radius);
 }
+.step__image {
+  display: block;
+  width: calc(100% + 52px);
+  aspect-ratio: 1.38 / 1;
+  margin: -30px -26px 24px;
+  object-fit: cover;
+  border-radius: var(--radius) var(--radius) 0 0;
+  filter: saturate(.82) contrast(.96);
+  transition: transform .32s var(--ease), filter .32s var(--ease);
+}
+.step:hover .step__image { transform: scale(1.025); filter: saturate(.94) contrast(1); }
 .step::before {
   counter-increment: step;
   content: "0" counter(step);
@@ -964,7 +1002,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 
   .cards, .cards--2, .cards--4, .gallery, .steps, .usecases, .direction-grid, .why-grid { grid-template-columns: 1fr; }
   .direction-grid { gap: 16px; }
-  .direction-card { aspect-ratio: 1.18 / 1; padding: 24px; }
+  .direction-card { aspect-ratio: 1.18 / 1; padding: 0 24px 24px; }
   .direction-card__num { top: 22px; left: 24px; }
   .direction-card__arrow { right: 22px; bottom: 22px; }
   .direction-card h3 { max-width: 80%; font-size: 24px; }
