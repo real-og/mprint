@@ -5,6 +5,68 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* ---------- Единая навигация и список направлений ---------- */
+  var services = [
+    ['Широкоформатная печать', 'shirokoformatnaya-pechat.html'],
+    ['Оформление мест продаж', 'oformlenie-mest-prodazh.html'],
+    ['Оформление витрин', 'oformlenie-vitrin.html'],
+    ['Оклейка авто', 'okleyka-avto.html'],
+    ['Демонтаж старой рекламы', 'demontazh-staroy-reklamy.html'],
+    ['Плоттерная резка', 'plotternaya-rezka.html'],
+    ['Печать на баннерной сетке', 'bannernaya-setka.html'],
+    ['Печать на баннерной ткани', 'bannernaya-tkan.html'],
+    ['Нанесение изображения на ПВХ', 'nanesenie-izobrazheniya-na-pvh.html']
+  ];
+  var products = [
+    ['Таблички', 'tablichki-ukazateli.html'],
+    ['Роллапы', 'roll-up.html'],
+    ['Информационные стенды', 'informatsionnye-stendy.html'],
+    ['Офисные таблички и указатели', 'ofisnye-tablichki-i-ukazateli.html'],
+    ['Растяжки', 'rastyazhki.html'],
+    ['Стикеры', 'stikery.html'],
+    ['Штендеры', 'shtendery.html'],
+    ['Картины на холсте', 'holsty.html']
+  ];
+
+  function navGroup(title, items) {
+    return '<div class="nav__group">' +
+      '<button type="button" class="nav__toggle" aria-expanded="false" aria-haspopup="true">' + title + ' <span class="nav__caret" aria-hidden="true">▾</span></button>' +
+      '<div class="nav__menu">' + items.map(function (item) {
+        return '<a href="' + item[1] + '">' + item[0] + '</a>';
+      }).join('') + '</div></div>';
+  }
+
+  var siteNav = document.getElementById('site-nav');
+  if (siteNav) {
+    siteNav.innerHTML = '<a href="index.html">Главная</a>' +
+      navGroup('Услуги', services) +
+      navGroup('Каталог', products) +
+      '<a href="about.html">О нас</a>' +
+      '<a href="contacts.html">Контакты</a>' +
+      '<a href="#" class="btn btn--primary nav__cta" data-calc>Рассчитать стоимость</a>';
+  }
+
+  var footerGrid = document.querySelector('.footer__grid');
+  if (footerGrid) {
+    footerGrid.innerHTML = '<div class="footer__about">' +
+      '<a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a>' +
+      '<p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div>' +
+      '<div><h4>Услуги</h4><div class="footer__links">' + services.slice(0, 5).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
+      '<div><h4>Каталог</h4><div class="footer__links">' + products.slice(0, 5).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
+      '<div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a>' +
+      '<a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск</span></div></div>';
+  }
+
+  var allDirections = services.concat(products);
+  document.querySelectorAll('select[name="service"]').forEach(function (select) {
+    var selected = select.value;
+    select.innerHTML = '<option value="">Выберите направление</option>' +
+      allDirections.map(function (item) {
+        return '<option value="' + item[0] + '">' + item[0] + '</option>';
+      }).join('') + '<option value="Другое">Другое</option>';
+    if (selected) select.value = selected;
+  });
+
   /* ---------- Мобильное меню ---------- */
   var burger = document.querySelector('.burger');
   var nav = document.querySelector('.nav');
