@@ -341,15 +341,21 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 
 .advantages {
-  padding: 38px 0 24px;
-  background: var(--white);
+  position: relative;
+  z-index: 2;
+  margin-top: -42px;
+  padding: 0 0 24px;
+  background: linear-gradient(to bottom, transparent 0 42px, var(--white) 42px);
 }
 
 .advantages__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--gray-100);
-  border-bottom: 1px solid var(--gray-100);
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(20, 22, 26, .09);
 }
 
 .advantage {
@@ -538,9 +544,13 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   box-shadow: 0 20px 45px rgba(20, 22, 26, .15);
 }
 .direction-card:hover .direction-card__image { transform: scale(1.045); filter: saturate(.96) contrast(1); opacity: .88; }
-.direction-card:hover::after { background: linear-gradient(to bottom, rgba(255, 210, 0, .04) 34%, rgba(255, 210, 0, .94) 100%); }
+.direction-card:hover::after,
+#products .direction-card:hover::after { background: linear-gradient(to bottom, rgba(255, 210, 0, .04) 34%, rgba(255, 210, 0, .94) 100%); }
 .direction-card:hover::before { transform: scale(1.18); opacity: .11; }
-.direction-card:hover h3 { color: var(--black); text-shadow: none; }
+.direction-card:hover h3 {
+  color: var(--black);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .65), 0 4px 16px rgba(20, 22, 26, .2);
+}
 .direction-card:hover .direction-card__arrow { transform: rotate(45deg); background: var(--graphite); border-color: var(--graphite); color: var(--white); }
 .direction-card:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
 
@@ -1002,7 +1012,11 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .direction-card { aspect-ratio: 1.18 / 1; padding: 0 24px 24px; }
   .direction-card__arrow { right: 22px; bottom: 22px; }
   .direction-card h3 { max-width: 80%; font-size: 24px; }
-  .advantages { padding: 30px 0 18px; }
+  .advantages {
+    margin-top: -24px;
+    padding: 0 0 18px;
+    background: linear-gradient(to bottom, transparent 0 24px, var(--white) 24px);
+  }
   .advantages__grid { grid-template-columns: 1fr; }
   .advantage { padding: 26px 22px; }
   .advantage + .advantage::before { display: none; }
