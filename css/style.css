@@ -343,9 +343,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .advantages {
   position: relative;
   z-index: 2;
-  margin-top: -88px;
+  margin-top: -102px;
   padding: 0;
-  background: linear-gradient(to bottom, transparent 0 88px, var(--gray-50) 88px);
+  background: linear-gradient(to bottom, transparent 0 102px, var(--gray-50) 102px);
 }
 
 #services { padding-top: 54px; }
@@ -1006,9 +1006,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .direction-card__arrow { right: 22px; bottom: 22px; }
   .direction-card h3 { max-width: 80%; font-size: 24px; }
   .advantages {
-    margin-top: -44px;
+    margin-top: -52px;
     padding: 0;
-    background: linear-gradient(to bottom, transparent 0 44px, var(--gray-50) 44px);
+    background: linear-gradient(to bottom, transparent 0 52px, var(--gray-50) 52px);
   }
   #services { padding-top: 46px; }
   .advantages__grid { grid-template-columns: 1fr; }
@@ -1057,7 +1057,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   object-fit: contain;
   pointer-events: none;
 
-  transform: translateY(-16px) scale(1.05);
+  transform: translateY(-16px) scale(.98);
   transform-origin: right center;
 }
 
@@ -1068,7 +1068,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   }
 
   .hero__visual img {
-    transform: translateY(-8px) scale(1);
+    transform: translateY(-8px) scale(.96);
     transform-origin: center;
   }
 }
