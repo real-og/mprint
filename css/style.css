@@ -1057,7 +1057,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   object-fit: contain;
   pointer-events: none;
 
-  transform: translateY(-16px) scale(.98);
+  transform: translate(-10px, -16px) scale(.94);
   transform-origin: right center;
 }
 
@@ -1068,7 +1068,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   }
 
   .hero__visual img {
-    transform: translateY(-8px) scale(.96);
+    transform: translateY(-8px) scale(.94);
     transform-origin: center;
   }
 }
