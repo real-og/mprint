@@ -293,7 +293,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   grid-template-columns: 1.15fr .85fr;
   gap: 56px;
   align-items: center;
-  padding: 18px 0 96px;
+  padding: 32px 0 128px;
 }
 .hero h1 { color: var(--white); }
 .hero h1 mark { background: transparent; color: var(--yellow); }
@@ -343,9 +343,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .advantages {
   position: relative;
   z-index: 2;
-  margin-top: -102px;
+  margin-top: -82px;
   padding: 0;
-  background: linear-gradient(to bottom, transparent 0 102px, var(--gray-50) 102px);
+  background: linear-gradient(to bottom, transparent 0 82px, var(--gray-50) 82px);
 }
 
 #services { padding-top: 54px; }
@@ -425,8 +425,8 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   max-width: none;
   object-fit: contain;
   pointer-events: none;
-  transform: translate(-10px, -16px) scale(.94);
-  transform-origin: right center;
+  transform: translate(-20px, -4px) scale(1.16);
+  transform-origin: center;
 }
 .placeholder-note {
   color: var(--gray-400);
@@ -959,7 +959,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 @media (max-width: 1024px) {
   .hero__inner { grid-template-columns: 1fr; gap: 40px; }
   .hero__visual { aspect-ratio: 16/9; }
-  .hero__visual img { transform: translateY(-8px) scale(.94); transform-origin: center; }
+  .hero__visual img { transform: translateY(-4px) scale(1.02); transform-origin: center; }
   .cards, .gallery { grid-template-columns: repeat(2, 1fr); }
   .cards--4 { grid-template-columns: repeat(2, 1fr); }
   .direction-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1025,9 +1025,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .direction-card__arrow { right: 22px; bottom: 22px; }
   .direction-card h3 { max-width: 80%; font-size: 24px; }
   .advantages {
-    margin-top: -52px;
+    margin-top: -38px;
     padding: 0;
-    background: linear-gradient(to bottom, transparent 0 52px, var(--gray-50) 52px);
+    background: linear-gradient(to bottom, transparent 0 38px, var(--gray-50) 38px);
   }
   #services { padding-top: 46px; }
   .advantages__grid { grid-template-columns: 1fr; }
@@ -1052,7 +1052,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .hero__inner > div:first-child {
   position: relative;
   z-index: 1;
-  transform: translateY(-14px);
+  transform: none;
 }
 
 /* ============================================================
