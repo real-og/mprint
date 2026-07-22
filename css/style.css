@@ -293,7 +293,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   grid-template-columns: 1.15fr .85fr;
   gap: 56px;
   align-items: center;
-  padding: 76px 0 108px;
+  padding: 58px 0 126px;
 }
 .hero h1 { color: var(--white); }
 .hero h1 mark { background: transparent; color: var(--yellow); }
@@ -343,9 +343,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .advantages {
   position: relative;
   z-index: 2;
-  margin-top: -42px;
+  margin-top: -60px;
   padding: 0;
-  background: linear-gradient(to bottom, transparent 0 42px, var(--gray-50) 42px);
+  background: linear-gradient(to bottom, transparent 0 60px, var(--gray-50) 60px);
 }
 
 #services { padding-top: 64px; }
@@ -545,9 +545,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   border-color: var(--yellow);
   box-shadow: 0 20px 45px rgba(20, 22, 26, .15);
 }
-.direction-card:hover .direction-card__image { transform: scale(1.045); filter: saturate(.96) contrast(1); opacity: .88; }
+.direction-card:hover .direction-card__image { transform: scale(1.045); filter: saturate(.96) contrast(1); opacity: 1; }
 .direction-card:hover::after,
-#products .direction-card:hover::after { background: linear-gradient(to bottom, rgba(255, 210, 0, .04) 34%, rgba(255, 210, 0, .94) 100%); }
+#products .direction-card:hover::after { background: linear-gradient(to bottom, rgba(255, 210, 0, 0) 52%, rgba(255, 210, 0, .12) 64%, rgba(255, 210, 0, .92) 100%); }
 .direction-card:hover::before { transform: scale(1.18); opacity: .11; }
 .direction-card:hover h3 {
   color: var(--black);
@@ -1015,9 +1015,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .direction-card__arrow { right: 22px; bottom: 22px; }
   .direction-card h3 { max-width: 80%; font-size: 24px; }
   .advantages {
-    margin-top: -24px;
+    margin-top: -32px;
     padding: 0;
-    background: linear-gradient(to bottom, transparent 0 24px, var(--gray-50) 24px);
+    background: linear-gradient(to bottom, transparent 0 32px, var(--gray-50) 32px);
   }
   #services { padding-top: 46px; }
   .advantages__grid { grid-template-columns: 1fr; }
