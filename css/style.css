@@ -1419,7 +1419,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 .service-detail-hero__copy h1 {
   max-width: 620px;
-  margin: 14px 0 24px;
+  margin: 0 0 24px;
   font-size: clamp(48px, 5.4vw, 76px);
   line-height: .98;
   letter-spacing: -.045em;
@@ -1475,10 +1475,14 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 
 .service-gallery {
   min-width: 0;
+  width: 100%;
+  max-width: 640px;
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);
   gap: 14px;
   align-items: stretch;
+  justify-self: end;
+  margin-top: 32px;
 }
 .service-gallery__thumbs {
   display: grid;
@@ -1720,7 +1724,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .service-faq__layout,
   .service-seo__layout { grid-template-columns: 1fr; gap: 48px; }
   .service-detail-hero__copy { max-width: 760px; }
-  .service-gallery { max-width: 900px; }
+  .service-gallery { max-width: 820px; justify-self: start; margin-top: 0; }
   .service-variation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-variation-card:last-child { grid-column: 1 / -1; }
   .service-faq__layout .section-head,
