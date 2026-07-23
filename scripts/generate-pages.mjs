@@ -174,6 +174,7 @@ const modal = () => `<div class="modal" id="calc-modal" role="dialog" aria-modal
 function page(item, category) {
   const folder = item.file.replace(/\.html$/, '').replaceAll('-', '_');
   const plainH1 = item.h1.replace(/<[^>]+>/g, '');
+  const compactTitle = plainH1.length > 27 || plainH1.split(/\s+/).some(word => word.length >= 14);
   const points = item.benefits.slice(0, 3).map(x => `<li>${x}</li>`).join('');
   const materialList = item.materials.join(', ');
   const variations = item.uses.slice(0, 3).map((x, index) => `
@@ -212,7 +213,7 @@ function page(item, category) {
         <div class="breadcrumbs service-detail-breadcrumbs"><a href="index.html">Главная</a><span>/</span><a href="index.html#${category === 'Услуги' ? 'services' : 'products'}">${category}</a><span>/</span>${item.name}</div>
         <div class="service-detail-hero__grid">
           <div class="service-detail-hero__copy">
-            <h1>${plainH1}</h1>
+            <h1${compactTitle ? ' class="service-detail-title--compact"' : ''}>${plainH1}</h1>
             <p class="service-detail-hero__lead">${item.description}</p>
             <ul class="service-detail-points">${points}</ul>
             <div class="service-detail-hero__actions">
