@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
     ['Широкоформатная печать', 'shirokoformatnaya-pechat.html'],
     ['Оформление мест продаж', 'oformlenie-mest-prodazh.html'],
     ['Оформление витрин', 'oformlenie-vitrin.html'],
-    ['Оклейка авто', 'okleyka-avto.html'],
+    ['Стикеры на авто', 'stikery-na-avto.html'],
+    ['Ультрафиолетовая UV-печать', 'ultrafioletovaya-uv-pechat.html'],
+    ['Оформление вендинговых аппаратов', 'oformlenie-vendingovyh-apparatov.html'],
     ['Демонтаж старой рекламы', 'demontazh-staroy-reklamy.html'],
     ['Плоттерная резка', 'plotternaya-rezka.html'],
     ['Печать на баннерной сетке', 'bannernaya-setka.html'],
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     footerGrid.innerHTML = '<div class="footer__about">' +
       '<a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a>' +
       '<p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div>' +
-      '<div><h4>Услуги</h4><div class="footer__links">' + services.slice(0, 5).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
+      '<div><h4>Услуги</h4><div class="footer__links">' + services.slice(0, 6).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
       '<div><h4>Каталог</h4><div class="footer__links">' + products.slice(0, 5).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
       '<div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a>' +
       '<a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск</span></div></div>';

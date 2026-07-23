@@ -29,13 +29,31 @@ const services = [
     materials: ['Мономерная плёнка', 'Перфорированная плёнка One Way Vision', 'Матовая плёнка', 'Прозрачная плёнка', 'Плоттерная аппликация', 'Ламинация']
   },
   {
-    file: 'okleyka-avto.html', name: 'Оклейка авто', h1: 'Рекламная <mark>оклейка авто</mark>',
-    description: 'Брендирование и рекламная оклейка автомобилей в Минске: дизайн, печать на автоплёнке, ламинация, монтаж и демонтаж.',
-    introTitle: 'Мобильная реклама для вашего бизнеса', intro: 'Наносим логотипы, контакты и полноцветную графику на легковые автомобили, фургоны и коммерческий транспорт. Подготавливаем макет с учётом кузова и используем плёнки, рассчитанные на эксплуатацию на улице.',
-    hero: 'Брендированный<br>автомобиль',
-    uses: [['Служебные авто', 'Логотип, контакты и фирменный стиль компании.'], ['Фургоны', 'Использование большой площади кузова для рекламы.'], ['Автопарки', 'Единое оформление нескольких машин.'], ['Временные акции', 'Съёмная графика для кампаний и мероприятий.']],
-    benefits: ['Макет с привязкой к форме кузова', 'Износостойкая печать с защитной ламинацией', 'Аккуратная оклейка сложных элементов', 'Единый цвет на всём автопарке', 'Возможность безопасного демонтажа'],
-    materials: ['Автомобильная ПВХ-плёнка', 'Литая плёнка', 'Полимерная плёнка', 'Защитная ламинация', 'Светоотражающая плёнка', 'Плоттерная аппликация']
+    file: 'stikery-na-avto.html', name: 'Стикеры на авто', h1: 'Стикеры <mark>на авто</mark>',
+    description: 'Изготовление и нанесение рекламных стикеров на автомобили в Минске: логотипы, контакты, надписи и полноцветные наклейки.',
+    introTitle: 'Заметная реклама без полной оклейки кузова', intro: 'Изготавливаем отдельные стикеры, надписи и комплекты графики для легковых автомобилей, фургонов и коммерческого транспорта. Подготавливаем макет с учётом формы кузова, печатаем, вырезаем и аккуратно наносим элементы.',
+    hero: 'Рекламные стикеры<br>на автомобиле',
+    uses: [['Логотипы и контакты', 'Фирменный знак, телефон, сайт и социальные сети.'], ['Комплекты для дверей', 'Согласованные элементы для боковых и задних частей кузова.'], ['Маркировка автопарка', 'Единый стиль и нумерация служебного транспорта.'], ['Временные акции', 'Съёмные рекламные сообщения для кампаний и мероприятий.']],
+    benefits: ['Макет с привязкой к выбранной части кузова', 'Контурная резка надписей и логотипов', 'Защитная ламинация полноцветных стикеров', 'Повторяемый результат для автопарка', 'Аккуратное нанесение и демонтаж'],
+    materials: ['Автомобильная ПВХ-плёнка', 'Полимерная плёнка', 'Защитная ламинация', 'Светоотражающая плёнка', 'Цветная плёнка', 'Монтажная плёнка']
+  },
+  {
+    file: 'ultrafioletovaya-uv-pechat.html', name: 'Ультрафиолетовая UV-печать', h1: 'Ультрафиолетовая <mark>UV-печать</mark>',
+    description: 'Ультрафиолетовая UV-печать в Минске на листовых материалах и готовых заготовках: чёткое полноцветное изображение и стойкий результат.',
+    introTitle: 'Прямая печать на жёстких материалах', intro: 'UV-чернила закрепляются ультрафиолетовым светом сразу после нанесения. Это позволяет получать чёткую графику на ПВХ, акриле, композите и других совместимых поверхностях без предварительной оклейки плёнкой.',
+    hero: 'UV-печать<br>на материале',
+    uses: [['Таблички и панели', 'Полноцветная графика на жёсткой основе.'], ['Интерьерный декор', 'Изображения для офисов, магазинов и выставочных пространств.'], ['POS-материалы', 'Панели, дисплеи и элементы оформления мест продаж.'], ['Небольшие тиражи', 'Персонализированные изделия и образцы от одного экземпляра.']],
+    benefits: ['Печать непосредственно на поверхности', 'Чёткие детали и насыщенные цвета', 'Изготовление единичных изделий и тиражей', 'Стойкое изображение без дополнительной плёнки', 'Проверка совместимости материала до запуска'],
+    materials: ['ПВХ', 'Акрил', 'Алюминиевый композит', 'Картон', 'Дерево и фанера', 'Другие материалы после теста']
+  },
+  {
+    file: 'oformlenie-vendingovyh-apparatov.html', name: 'Оформление вендинговых аппаратов', h1: 'Оформление <mark>вендинговых аппаратов</mark>',
+    description: 'Оформление и брендирование вендинговых аппаратов в Минске: дизайн, печать наклеек, ламинация, резка и аккуратное нанесение.',
+    introTitle: 'Аппарат становится заметной точкой контакта', intro: 'Оформляем кофейные, снековые и другие вендинговые аппараты в фирменном стиле. Учитываем дверцы, дисплеи, кнопки, вентиляцию и сервисные зоны, чтобы графика выглядела цельно и не мешала эксплуатации.',
+    hero: 'Брендированный<br>вендинговый аппарат',
+    uses: [['Кофейные аппараты', 'Фирменная графика, меню и акционные предложения.'], ['Снековые автоматы', 'Яркое оформление корпуса и навигация по ассортименту.'], ['Сеть аппаратов', 'Единый дизайн для нескольких точек размещения.'], ['Ребрендинг', 'Замена устаревшей графики без покупки нового оборудования.']],
+    benefits: ['Макет с учётом модели и геометрии корпуса', 'Точная резка под функциональные элементы', 'Износостойкая печать с ламинацией', 'Единый цвет для всей сети аппаратов', 'Монтаж и демонтаж по согласованию'],
+    materials: ['Полимерная ПВХ-плёнка', 'Защитная ламинация', 'Цветная плёнка', 'Контурные наклейки', 'Плоттерная аппликация', 'Съёмная рекламная графика']
   },
   {
     file: 'demontazh-staroy-reklamy.html', name: 'Демонтаж старой рекламы', h1: 'Демонтаж <mark>старой рекламы</mark>',
@@ -167,7 +185,7 @@ const header = () => `<header class="header"><div class="container header__inner
 
 const options = [...services, ...products].map(x => `<option>${x.name}</option>`).join('');
 
-const footer = () => `<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__about"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a><p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div><div><h4>Услуги</h4><div class="footer__links"><a href="shirokoformatnaya-pechat.html">Широкоформатная печать</a><a href="oformlenie-mest-prodazh.html">Оформление мест продаж</a><a href="oformlenie-vitrin.html">Оформление витрин</a><a href="okleyka-avto.html">Оклейка авто</a><a href="plotternaya-rezka.html">Плоттерная резка</a></div></div><div><h4>Каталог</h4><div class="footer__links"><a href="tablichki-ukazateli.html">Таблички</a><a href="roll-up.html">Роллапы</a><a href="informatsionnye-stendy.html">Информационные стенды</a><a href="stikery.html">Стикеры</a><a href="holsty.html">Картины на холсте</a></div></div><div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск</span></div></div></div><div class="footer__bottom"><span>© 2026 m-print.by. Все права защищены.</span><span>Рекламное производство · Минск</span></div></div></footer>`;
+const footer = () => `<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__about"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a><p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div><div><h4>Услуги</h4><div class="footer__links">${services.slice(0, 6).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Каталог</h4><div class="footer__links">${products.slice(0, 5).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск</span></div></div></div><div class="footer__bottom"><span>© 2026 m-print.by. Все права защищены.</span><span>Рекламное производство · Минск</span></div></div></footer>`;
 
 const modal = () => `<div class="modal" id="calc-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal__box"><button class="modal__close" data-close aria-label="Закрыть">×</button><h3 id="modal-title">Рассчитать стоимость</h3><p>Оставьте контакты — пришлём смету и ответим на вопросы.</p><form class="form form--plain" data-form><div class="form__success">Спасибо! Заявка отправлена — мы скоро свяжемся с вами.</div><div class="field"><label for="m-name">Ваше имя</label><input type="text" id="m-name" name="name" placeholder="Как к вам обращаться" required></div><div class="field"><label for="m-phone">Телефон</label><input type="tel" id="m-phone" name="phone" placeholder="+375 (__) ___-__-__" required></div><div class="field"><label for="m-service">Направление</label><select id="m-service" name="service"><option value="">Выберите направление</option>${options}<option>Другое</option></select></div><div class="field"><label for="m-comment">Комментарий</label><textarea id="m-comment" name="comment" placeholder="Размеры, количество, сроки"></textarea></div><button type="submit" class="btn btn--primary btn--block btn--lg">Отправить</button></form></div></div>`;
 
@@ -281,6 +299,7 @@ function page(item, category) {
 
 for (const item of services.slice(1)) writeFileSync(item.file, page(item, 'Услуги'));
 for (const item of products) writeFileSync(item.file, page(item, 'Каталог'));
+writeFileSync('okleyka-avto.html', `<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0; url=stikery-na-avto.html"><link rel="canonical" href="https://m-print.by/stikery-na-avto.html"><title>Страница перемещена — m-print.by</title><meta name="description" content="Услуга переименована в «Стикеры на авто»."><link rel="stylesheet" href="css/style.css"></head><body>${header()}<main><section class="section"><div class="container center"><div class="section-head"><span class="eyebrow">Страница перемещена</span><h1>Стикеры на авто</h1><p>Перенаправляем на актуальную страницу услуги.</p><a class="btn btn--primary btn--lg" href="stikery-na-avto.html">Перейти к услуге</a></div></div></section></main>${footer()}<script src="js/main.js"></script></body></html>`);
 
 // Этот запуск обновляет только детальные страницы. Главная, «О нас» и контакты
 // поддерживаются отдельно, чтобы не потерять их индивидуальную структуру.
@@ -299,7 +318,7 @@ const replacement = `<!-- ===================== УСЛУГИ ===================
 
   <!-- ===================== ПРЕИМУЩЕСТВА ===================== -->`;
 let updated = index.replace(/<!-- ===================== УСЛУГИ ===================== -->[\s\S]*?<!-- ===================== ПРЕИМУЩЕСТВА ===================== -->/, replacement)
-  .replace('баннеры, roll up, таблички, холсты, фотообои, баннерная сетка и ткань', 'печать, оформление витрин и мест продаж, оклейка авто, таблички, стенды и роллапы');
+  .replace('баннеры, roll up, таблички, холсты, фотообои, баннерная сетка и ткань', 'печать, оформление витрин и мест продаж, стикеры на авто, UV-печать, таблички, стенды и роллапы');
 if (!updated.includes('class="card__link about-link"')) {
   updated = updated.replace('<p style="margin-top:14px;color:var(--text-muted)">Берём проект под ключ:', '<a href="about.html" class="card__link about-link">Подробнее о компании</a><p style="margin-top:14px;color:var(--text-muted)">Берём проект под ключ:');
 }
