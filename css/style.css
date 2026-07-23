@@ -1415,16 +1415,21 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-  gap: 64px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: 44px;
   align-items: center;
+}
+.service-detail-hero__copy {
+  min-width: 0;
 }
 .service-detail-hero__copy h1 {
   max-width: 620px;
   margin: 0 0 24px;
-  font-size: clamp(48px, 5.4vw, 76px);
+  font-size: clamp(46px, 4.4vw, 68px);
   line-height: .98;
   letter-spacing: -.045em;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .service-detail-hero__lead {
   max-width: 610px;
@@ -1721,7 +1726,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 
 .footer__address { color: var(--gray-500); font-size: 15px; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
   .service-detail-hero__grid,
   .service-faq__layout,
   .service-seo__layout { grid-template-columns: 1fr; gap: 48px; }
