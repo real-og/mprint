@@ -172,23 +172,115 @@ const footer = () => `<footer class="footer"><div class="container"><div class="
 const modal = () => `<div class="modal" id="calc-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal__box"><button class="modal__close" data-close aria-label="Закрыть">×</button><h3 id="modal-title">Рассчитать стоимость</h3><p>Оставьте контакты — пришлём смету и ответим на вопросы.</p><form class="form form--plain" data-form><div class="form__success">Спасибо! Заявка отправлена — мы скоро свяжемся с вами.</div><div class="field"><label for="m-name">Ваше имя</label><input type="text" id="m-name" name="name" placeholder="Как к вам обращаться" required></div><div class="field"><label for="m-phone">Телефон</label><input type="tel" id="m-phone" name="phone" placeholder="+375 (__) ___-__-__" required></div><div class="field"><label for="m-service">Направление</label><select id="m-service" name="service"><option value="">Выберите направление</option>${options}<option>Другое</option></select></div><div class="field"><label for="m-comment">Комментарий</label><textarea id="m-comment" name="comment" placeholder="Размеры, количество, сроки"></textarea></div><button type="submit" class="btn btn--primary btn--block btn--lg">Отправить</button></form></div></div>`;
 
 function page(item, category) {
-  const uses = item.uses.map(x => `<div class="usecase"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');
-  const benefits = item.benefits.map(x => `<li>${x}</li>`).join('');
-  const materials = item.materials.map(x => `<span class="tag">${x}</span>`).join('');
+  const folder = item.file.replace(/\.html$/, '').replaceAll('-', '_');
+  const plainH1 = item.h1.replace(/<[^>]+>/g, '');
+  const points = item.benefits.slice(0, 3).map(x => `<li>${x}</li>`).join('');
+  const materialList = item.materials.join(', ');
+  const variations = item.uses.slice(0, 3).map((x, index) => `
+          <a href="#request" class="service-variation-card">
+            <img src="img/${folder}/variation-${index + 1}.webp" alt="${x[0]} — ${item.name.toLowerCase()}" loading="lazy">
+            <span class="service-variation-card__meta">${category === 'Каталог' ? 'Вариант изделия' : 'Вариант услуги'}</span>
+            <h3>${x[0]}</h3>
+            <p>${x[1]}</p>
+            <span class="service-variation-card__arrow" aria-hidden="true">↗</span>
+          </a>`).join('');
+
   return `<!DOCTYPE html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${item.name} в Минске — m-print.by</title><meta name="description" content="${item.description}"><link rel="stylesheet" href="css/style.css"></head><body>
-${header()}
-<main>
-<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="index.html">Главная</a><span>/</span>${category}<span>/</span>${item.name}</div><div class="page-hero__inner"><div><span class="eyebrow">${category}</span><h1>${item.h1}</h1><p>${item.description}</p><div class="page-hero__actions"><a href="#" class="btn btn--primary btn--lg" data-calc data-service="${item.name}">Рассчитать стоимость</a><a href="#request" class="btn btn--ghost btn--lg">Оставить заявку</a></div></div><div class="hero__visual"><span class="placeholder-note">Фото: ${item.hero}</span></div></div></div></section>
-<section class="section"><div class="container"><div class="split split--wide-left"><div><span class="eyebrow">Для чего подходит</span><h2>${item.introTitle}</h2><p class="lead service-intro">${item.intro}</p><div class="usecases">${uses}</div></div><div><span class="eyebrow">Преимущества</span><h2>Продумано до деталей</h2><ul class="checklist service-checklist">${benefits}</ul></div></div></div></section>
-<section class="section section--gray"><div class="container"><div class="section-head"><span class="eyebrow">Материалы и варианты</span><h2>Подберём решение под задачу</h2><p>Точный набор материалов и обработку согласуем после уточнения размеров, места размещения и срока использования.</p></div><div class="tags">${materials}</div></div></section>
-<section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Как мы работаем</span><h2>От задачи до готового результата</h2></div><div class="steps"><div class="step"><h3>Заявка</h3><p>Уточняем размеры, тираж, место использования и сроки.</p></div><div class="step"><h3>Расчёт и макет</h3><p>Подбираем материалы, считаем стоимость и проверяем файл.</p></div><div class="step"><h3>Изготовление</h3><p>Печатаем, режем и выполняем согласованную обработку.</p></div><div class="step"><h3>Готовый заказ</h3><p>Проверяем результат и передаём заказ удобным способом.</p></div></div></div></section>
-<section class="section section--dark" id="request"><div class="container"><div class="form-wrap"><div><span class="eyebrow">Оставить заявку</span><h2>Рассчитаем стоимость</h2><p class="request-copy">Укажите размеры, количество и желаемый срок. Подскажем подходящий материал и подготовим расчёт.</p><div class="messengers"><a href="#">✈️ Telegram</a><a href="#">🟣 Viber</a><a href="#">🟢 WhatsApp</a></div></div><form class="form" data-form><div class="form__success">Спасибо! Заявка отправлена — мы скоро свяжемся с вами.</div><div class="field"><label for="name">Ваше имя</label><input type="text" id="name" name="name" placeholder="Как к вам обращаться" required></div><div class="field"><label for="phone">Телефон</label><input type="tel" id="phone" name="phone" placeholder="+375 (__) ___-__-__" required></div><div class="field"><label for="service">Направление</label><select id="service" name="service"><option selected>${item.name}</option>${options}</select></div><div class="field"><label for="comment">Комментарий</label><textarea id="comment" name="comment" placeholder="Размеры, количество, сроки"></textarea></div><button type="submit" class="btn btn--primary btn--block btn--lg">Отправить заявку</button></form></div></div></section>
-</main>${footer()}${modal()}<script src="js/main.js"></script></body></html>`;
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${item.name} в Минске — заказать | m-print.by</title>
+  <meta name="description" content="${item.description}">
+  <link rel="canonical" href="https://m-print.by/${item.file}">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: item.name,
+    description: item.description,
+    provider: { '@type': 'LocalBusiness', name: 'm-print.by', url: 'https://m-print.by/' },
+    areaServed: { '@type': 'City', name: 'Минск' },
+    url: `https://m-print.by/${item.file}`
+  })}</script>
+</head>
+<body>
+  ${header()}
+  <main class="service-detail-page">
+    <section class="service-detail-hero">
+      <div class="container">
+        <div class="breadcrumbs service-detail-breadcrumbs"><a href="index.html">Главная</a><span>/</span><a href="index.html#${category === 'Услуги' ? 'services' : 'products'}">${category}</a><span>/</span>${item.name}</div>
+        <div class="service-detail-hero__grid">
+          <div class="service-detail-hero__copy">
+            <h1>${plainH1}</h1>
+            <p class="service-detail-hero__lead">${item.description}</p>
+            <ul class="service-detail-points">${points}</ul>
+            <div class="service-detail-hero__actions">
+              <a href="#request" class="btn btn--primary btn--lg">Заказать</a>
+              <a href="#" class="service-detail-text-link" data-calc data-service="${item.name}">Узнать стоимость <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="service-gallery" data-service-gallery>
+            <div class="service-gallery__thumbs" aria-label="Фотографии: ${item.name}">
+              ${[1, 2, 3, 4].map((number, index) => `<button class="service-gallery__thumb${index === 0 ? ' is-active' : ''}" type="button" data-gallery-src="img/${folder}/gallery-${number}.webp" data-gallery-alt="${item.name}: пример ${number}" aria-label="Показать фотографию ${number}"><img src="img/${folder}/gallery-${number}.webp" alt="" ${index === 0 ? 'loading="eager"' : 'loading="lazy"'}></button>`).join('')}
+            </div>
+            <figure class="service-gallery__stage">
+              <img src="img/${folder}/gallery-1.webp" alt="${item.name}: пример готовой работы" data-gallery-main>
+              <figcaption><span>${category === 'Услуги' ? 'Собственное производство' : 'Изготовление под заказ'}</span><b>m-print.by</b></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section service-variations">
+      <div class="container">
+        <div class="section-head"><span class="eyebrow">${category === 'Услуги' ? 'Варианты услуги' : 'Варианты исполнения'}</span><h2>${item.introTitle}</h2><p>${item.intro}</p></div>
+        <div class="service-variation-grid">${variations}</div>
+      </div>
+    </section>
+
+    <section class="section section--gray service-faq" id="faq">
+      <div class="container service-faq__layout">
+        <div class="section-head"><span class="eyebrow">Часто задаваемые вопросы</span><h2>Что важно знать перед заказом</h2><p>Коротко ответили на вопросы о сроках, материалах, макете и расчёте.</p></div>
+        <div class="service-faq__list">
+          <details><summary>Какой срок изготовления?</summary><p>Срок зависит от размера, количества, материала и постобработки. После уточнения задачи назовём точную дату готовности и зафиксируем её при оформлении заказа.</p></details>
+          <details><summary>Можно ли заказать без готового макета?</summary><p>Да. Дизайнер подготовит макет под вашу задачу или адаптирует имеющиеся материалы. Итоговый вариант обязательно согласуем до производства.</p></details>
+          <details><summary>Какие материалы используются?</summary><p>Для этой задачи применяем: ${materialList}. Подходящий вариант выберем с учётом места использования, нагрузки и бюджета.</p></details>
+          <details><summary>Можно ли изготовить один экземпляр?</summary><p>Да, многие изделия и услуги доступны от одного экземпляра. Для тиража рассчитаем оптимальную технологию и стоимость единицы.</p></details>
+          <details><summary>Что нужно для расчёта?</summary><p>Сообщите примерные размеры, количество, место использования и желаемый срок. Если каких-то данных нет, поможем определить их во время консультации.</p></details>
+          <details><summary>От чего зависит стоимость?</summary><p>Цена складывается из материала, размера, количества, сложности макета и постобработки. До начала работ подготовим понятную смету без скрытых доплат.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark service-request" id="request">
+      <div class="container"><div class="form-wrap">
+        <div><span class="eyebrow">Обсудить заказ</span><h2>Рассчитаем ${item.name.toLowerCase()}</h2><p class="request-copy">Опишите задачу, укажите размеры и количество. Подскажем материал, уточним срок и подготовим расчёт.</p><div class="service-request__facts"><span>Помощь с макетом</span><span>Понятная смета</span><span>Контроль качества</span></div></div>
+        <form class="form" data-form><div class="form__success">Спасибо! Заявка отправлена — мы скоро свяжемся с вами.</div><div class="field"><label for="detail-name">Ваше имя</label><input type="text" id="detail-name" name="name" placeholder="Как к вам обращаться" required></div><div class="field"><label for="detail-phone">Телефон</label><input type="tel" id="detail-phone" name="phone" placeholder="+375 (__) ___-__-__" required></div><div class="field"><label for="detail-service">Направление</label><select id="detail-service" name="service"><option selected>${item.name}</option>${options}</select></div><div class="field"><label for="detail-comment">Параметры заказа</label><textarea id="detail-comment" name="comment" placeholder="Размеры, количество, сроки и пожелания"></textarea></div><button type="submit" class="btn btn--primary btn--block btn--lg">Отправить заявку</button></form>
+      </div></div>
+    </section>
+
+    <section class="section service-seo">
+      <div class="container service-seo__layout">
+        <div><span class="eyebrow">${category} в Минске</span><h2>${item.name} под вашу задачу</h2></div>
+        <div class="service-seo__content"><p>${item.intro}</p><p>${item.description} Работаем с компаниями, организациями, индивидуальными предпринимателями и частными заказчиками.</p><h3>Материалы и подготовка</h3><p>В зависимости от задачи используем ${materialList}. Проверим исходные данные, поможем подготовить макет и согласуем способ изготовления до запуска.</p><h3>Расчёт стоимости</h3><p>Для точной цены нужны размеры, количество, назначение и желаемый срок. После уточнения параметров предложим подходящий вариант и зафиксируем стоимость.</p></div>
+      </div>
+    </section>
+  </main>
+  ${footer()}
+  ${modal()}
+  <script src="js/main.js"></script>
+</body>
+</html>`;
 }
 
-for (const item of services) writeFileSync(item.file, page(item, 'Услуги'));
+for (const item of services.slice(1)) writeFileSync(item.file, page(item, 'Услуги'));
 for (const item of products) writeFileSync(item.file, page(item, 'Каталог'));
+
+// Этот запуск обновляет только детальные страницы. Главная, «О нас» и контакты
+// поддерживаются отдельно, чтобы не потерять их индивидуальную структуру.
+process.exit(0);
 
 const about = `<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>О компании m-print.by — рекламное производство в Минске</title><meta name="description" content="m-print.by — широкоформатная печать и рекламное производство в Минске. Помогаем с макетом, материалами, печатью, постобработкой и монтажом."><link rel="stylesheet" href="css/style.css"></head><body>${header()}<main><section class="page-hero about-hero"><div class="container"><div class="breadcrumbs"><a href="index.html">Главная</a><span>/</span>О нас</div><div class="page-hero__inner"><div><span class="eyebrow">О компании</span><h1>Рекламное производство <mark>m-print.by</mark></h1><p>Помогаем бизнесу в Минске создавать заметную наружную и интерьерную рекламу — от первой идеи и макета до готового изделия.</p><a href="#request" class="btn btn--primary btn--lg">Обсудить задачу</a></div><div class="hero__visual"><span class="placeholder-note">Фото: команда или<br>рекламное производство</span></div></div></div></section><section class="section"><div class="container"><div class="split split--wide-left"><div><span class="eyebrow">Кто мы</span><h2>Один подрядчик для печати и оформления</h2><p class="lead service-intro">m-print.by — типография широкоформатной печати в Минске. Работаем с компаниями, организациями и частными заказчиками: печатаем рекламные материалы, оформляем торговые пространства и изготавливаем готовые изделия.</p><p class="about-copy">Берём задачу целиком или подключаемся на отдельном этапе. Если макета нет — поможем его подготовить. Если вы не уверены в материале — предложим вариант под место размещения, срок использования и бюджет.</p></div><ul class="checklist"><li>Собственное оборудование и контроль качества</li><li>Помощь с подготовкой и проверкой макета</li><li>Печать, резка и постобработка в одном месте</li><li>Срочные заказы по предварительному согласованию</li><li>Работа с юридическими и физическими лицами</li></ul></div></div></section><section class="section section--gray"><div class="container"><div class="section-head"><span class="eyebrow">Наш подход</span><h2>Что важно в каждом заказе</h2></div><div class="cards cards--4"><div class="card"><div class="card__icon">01</div><h3>Понять задачу</h3><p>Уточняем, где и как будет использоваться изделие.</p></div><div class="card"><div class="card__icon">02</div><h3>Подобрать основу</h3><p>Предлагаем материал без лишней переплаты.</p></div><div class="card"><div class="card__icon">03</div><h3>Проверить макет</h3><p>До печати проверяем размеры и технические параметры.</p></div><div class="card"><div class="card__icon">04</div><h3>Сдать в срок</h3><p>Сразу согласуем сроки и сообщаем о готовности заказа.</p></div></div></div></section><section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Производственный процесс</span><h2>Все основные этапы под контролем</h2><p>Мы отвечаем не только за печать, но и за то, чтобы готовый материал подходил для дальнейшего монтажа и использования.</p></div><div class="steps"><div class="step"><h3>Консультация</h3><p>Обсуждаем задачу и требования к изделию.</p></div><div class="step"><h3>Подготовка</h3><p>Проверяем или создаём макет и согласуем материалы.</p></div><div class="step"><h3>Производство</h3><p>Печатаем, режем, ламинируем и собираем.</p></div><div class="step"><h3>Передача</h3><p>Проверяем заказ и передаём клиенту.</p></div></div></div></section><section class="section section--dark" id="request"><div class="container"><div class="form-wrap"><div><span class="eyebrow">Связаться с нами</span><h2>Расскажите о вашей задаче</h2><p class="request-copy">Опишите, что нужно изготовить. Мы уточним детали и предложим подходящий вариант.</p><div class="messengers"><a href="#">✈️ Telegram</a><a href="#">🟣 Viber</a><a href="#">🟢 WhatsApp</a></div></div><form class="form" data-form><div class="form__success">Спасибо! Заявка отправлена — мы скоро свяжемся с вами.</div><div class="field"><label for="name">Ваше имя</label><input id="name" name="name" required></div><div class="field"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" placeholder="+375 (__) ___-__-__" required></div><div class="field"><label for="comment">Комментарий</label><textarea id="comment" name="comment" placeholder="Коротко опишите задачу"></textarea></div><button class="btn btn--primary btn--block btn--lg">Отправить заявку</button></form></div></div></section></main>${footer()}${modal()}<script src="js/main.js"></script></body></html>`;
 // about.html поддерживается отдельно: не перезаписываем SEO-страницу генератором.
