@@ -172,6 +172,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* ---------- Галерея на детальной странице услуги ---------- */
+  document.querySelectorAll('[data-service-gallery]').forEach(function (gallery) {
+    var mainImage = gallery.querySelector('[data-gallery-main]');
+    var stage = gallery.querySelector('.service-gallery__stage');
+    var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-src]'));
+    var changeTimer;
+
+    function activateThumb(thumb) {
+      if (!mainImage || !stage || thumb.classList.contains('is-active')) return;
+
+      clearTimeout(changeTimer);
+      thumbs.forEach(function (item) {
+        var active = item === thumb;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      stage.classList.add('is-changing');
+      changeTimer = setTimeout(function () {
+        mainImage.src = thumb.getAttribute('data-gallery-src');
+        mainImage.alt = thumb.getAttribute('data-gallery-alt') || '';
+        stage.classList.remove('is-changing');
+      }, 120);
+    }
+
+    thumbs.forEach(function (thumb, index) {
+      thumb.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+      thumb.addEventListener('click', function () { activateThumb(thumb); });
+      thumb.addEventListener('mouseenter', function () { activateThumb(thumb); });
+      thumb.addEventListener('focus', function () { activateThumb(thumb); });
+    });
+  });
+
   /* ---------- Подсветка активного пункта меню ---------- */
   var path = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav a').forEach(function (a) {
