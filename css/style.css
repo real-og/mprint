@@ -2171,7 +2171,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 22px 0 26px;
+  margin: 22px 0 14px;
 }
 .contact-digital-card__meta span {
   padding: 8px 11px;
@@ -2181,6 +2181,52 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
+}
+.contact-socials {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 26px;
+}
+.contact-social {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 8px;
+  padding: 10px;
+  color: var(--graphite);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  border-radius: 11px;
+  font-size: 12px;
+  font-weight: 800;
+  transition: color .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.contact-social__icon {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  color: var(--white);
+  background: var(--graphite);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 900;
+}
+.contact-social--telegram .contact-social__icon { background: #229ed9; }
+.contact-social--viber .contact-social__icon { background: #7360f2; }
+.contact-social--instagram .contact-social__icon {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d 58%, #fcb045);
+}
+.contact-social:hover {
+  color: var(--graphite);
+  background: rgba(255, 210, 0, .16);
+  border-color: rgba(255, 210, 0, .75);
+  box-shadow: 0 9px 20px rgba(20, 22, 26, .09);
+  transform: translateY(-2px);
 }
 .contact-digital-card__actions {
   position: relative;
@@ -2246,6 +2292,8 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .contact-steps__grid article > span { margin-bottom: 22px; }
   .contact-page-hero { padding: 22px 0 58px; }
   .contact-digital-card { padding: 24px; border-radius: 17px; }
+  .contact-socials { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-social:last-child { grid-column: 1 / -1; }
   .contact-digital-card__actions { align-items: flex-start; flex-direction: column; }
   .contact-location .split { gap: 34px; }
   .contact-location__facts { grid-template-columns: 1fr; }
