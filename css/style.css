@@ -1045,7 +1045,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .direction-grid { gap: 16px; }
   .hero__inner {
     gap: 0;
-    padding-bottom: 96px;
+    padding-bottom: 52px;
   }
   .hero__visual { display: none; }
   .home-price-bar { padding-bottom: 60px; }
@@ -1060,9 +1060,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .direction-card__arrow { right: 22px; bottom: 22px; }
   .direction-card h3 { max-width: 80%; font-size: 24px; }
   .advantages {
-    margin-top: -38px;
-    padding: 0;
-    background: linear-gradient(to bottom, transparent 0 38px, var(--gray-50) 38px);
+    margin-top: 0;
+    padding: 18px 0 0;
+    background: var(--gray-50);
   }
   #services { padding-top: 46px; }
   .advantages__grid { grid-template-columns: 1fr; }
