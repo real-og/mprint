@@ -184,6 +184,27 @@ const nav = () => `<nav class="nav" id="site-nav"><a href="index.html">Глав�
 const header = () => `<header class="header"><div class="container header__inner"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a>${nav()}<div class="header__actions"><a href="tel:+375000000000" class="header__phone">+375 (00) 000-00-00</a><a href="#" class="btn btn--primary" data-calc>Рассчитать стоимость</a><button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>`;
 
 const options = [...services, ...products].map(x => `<option>${x.name}</option>`).join('');
+const prices = {
+  'shirokoformatnaya-pechat.html': 'от 15 BYN/м²',
+  'oformlenie-mest-prodazh.html': 'от 120 BYN',
+  'oformlenie-vitrin.html': 'от 80 BYN',
+  'stikery-na-avto.html': 'от 45 BYN',
+  'ultrafioletovaya-uv-pechat.html': 'от 25 BYN',
+  'oformlenie-vendingovyh-apparatov.html': 'от 180 BYN',
+  'demontazh-staroy-reklamy.html': 'от 50 BYN',
+  'plotternaya-rezka.html': 'от 20 BYN',
+  'bannernaya-setka.html': 'от 18 BYN/м²',
+  'bannernaya-tkan.html': 'от 15 BYN/м²',
+  'nanesenie-izobrazheniya-na-pvh.html': 'от 25 BYN',
+  'tablichki-ukazateli.html': 'от 25 BYN',
+  'roll-up.html': 'от 190 BYN',
+  'informatsionnye-stendy.html': 'от 80 BYN',
+  'ofisnye-tablichki-i-ukazateli.html': 'от 20 BYN',
+  'rastyazhki.html': 'от 40 BYN',
+  'stikery.html': 'от 15 BYN',
+  'shtendery.html': 'от 160 BYN',
+  'holsty.html': 'от 45 BYN'
+};
 
 const footer = () => `<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__about"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a><p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div><div><h4>Услуги</h4><div class="footer__links">${services.slice(0, 6).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Каталог</h4><div class="footer__links">${products.slice(0, 5).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск</span></div></div></div><div class="footer__bottom"><span>© 2026 m-print.by. Все права защищены.</span><span>Рекламное производство · Минск</span></div></div></footer>`;
 
@@ -198,6 +219,7 @@ function page(item, category) {
     : `<h1${compactTitle ? ' class="service-detail-title--compact"' : ''}>${plainH1}</h1>`;
   const points = item.benefits.slice(0, 3).map(x => `<li>${x}</li>`).join('');
   const materialList = item.materials.join(', ');
+  const price = prices[item.file] || 'по запросу';
   const variations = item.uses.slice(0, 3).map((x, index) => `
           <a href="#request" class="service-variation-card">
             <img src="img/${folder}/variation-${index + 1}.webp" alt="${x[0]} — ${item.name.toLowerCase()}" loading="lazy">
@@ -237,6 +259,10 @@ function page(item, category) {
             ${titleHtml}
             <p class="service-detail-hero__lead">${item.description}</p>
             <ul class="service-detail-points">${points}</ul>
+            <div class="service-price">
+              <div><span>Ориентировочная стоимость</span><strong>${price}</strong></div>
+              <a href="price.pdf" download>Полный прайс-лист PDF ↓</a>
+            </div>
             <div class="service-detail-hero__actions">
               <a href="#request" class="btn btn--primary btn--lg">Заказать</a>
               <a href="#" class="service-detail-text-link" data-calc data-service="${item.name}">Узнать стоимость <span aria-hidden="true">→</span></a>
