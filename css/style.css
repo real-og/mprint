@@ -1426,7 +1426,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .service-detail-hero {
   position: relative;
   overflow: hidden;
-  padding: 22px 0 92px;
+  padding: 22px 0 72px;
   background:
     radial-gradient(circle at 88% 8%, rgba(255, 210, 0, .12), transparent 28%),
     var(--white);
@@ -1665,7 +1665,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .service-gallery__stage figcaption span { font-size: 14px; }
 .service-gallery__stage figcaption b { color: var(--yellow); font-size: 14px; }
 
-.service-variations { padding-top: 100px; }
+.service-variations { padding-top: 76px; }
 .service-variation-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1946,7 +1946,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 
 @media (max-width: 760px) {
-  .service-detail-hero { padding: 16px 0 64px; }
+  .service-detail-hero { padding: 16px 0 52px; }
   .service-detail-breadcrumbs { margin-bottom: 30px; }
   .service-detail-hero__grid { gap: 38px; }
   .service-detail-hero__copy h1 { font-size: clamp(42px, 14vw, 58px); }
@@ -1970,7 +1970,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .service-gallery__thumb.is-active { transform: translateY(-2px); }
   .service-gallery__stage figcaption { right: 16px; bottom: 15px; left: 16px; }
   .service-gallery__stage figcaption span { display: none; }
-  .service-variations { padding-top: 70px; }
+  .service-variations { padding-top: 52px; }
   .service-variation-grid { grid-template-columns: 1fr; }
   .service-variation-card,
   .service-variation-card:last-child { grid-column: auto; min-height: 430px; padding: 24px; }
