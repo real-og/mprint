@@ -259,13 +259,13 @@ function page(item, category) {
             ${titleHtml}
             <p class="service-detail-hero__lead">${item.description}</p>
             <ul class="service-detail-points">${points}</ul>
-            <div class="service-price">
-              <div><span>Ориентировочная стоимость</span><strong>${price}</strong></div>
-              <a href="price.pdf" download>Полный прайс-лист PDF ↓</a>
-            </div>
             <div class="service-detail-hero__actions">
               <a href="#request" class="btn btn--primary btn--lg">Заказать</a>
               <a href="#" class="service-detail-text-link" data-calc data-service="${item.name}">Узнать стоимость <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="service-price">
+              <div><span>Стоимость</span><strong>${price}</strong></div>
+              <a href="price.pdf" download>Смотреть полный прайс <span aria-hidden="true">↓</span></a>
             </div>
           </div>
           <div class="service-gallery" data-service-gallery>
