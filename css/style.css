@@ -2196,9 +2196,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   min-width: 0;
   gap: 8px;
   padding: 10px;
-  color: var(--graphite);
-  background: var(--gray-50);
-  border: 1px solid var(--gray-100);
+  color: var(--white);
+  background: var(--graphite);
+  border: 1px solid var(--graphite);
   border-radius: 11px;
   font-size: 12px;
   font-weight: 800;
@@ -2210,23 +2210,23 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   width: 27px;
   height: 27px;
   flex: 0 0 27px;
-  color: var(--white);
-  background: var(--graphite);
+  color: var(--black);
+  background: var(--yellow);
   border-radius: 8px;
   font-size: 12px;
   font-weight: 900;
-}
-.contact-social--telegram .contact-social__icon { background: #229ed9; }
-.contact-social--viber .contact-social__icon { background: #7360f2; }
-.contact-social--instagram .contact-social__icon {
-  background: linear-gradient(135deg, #833ab4, #fd1d1d 58%, #fcb045);
+  transition: color .2s var(--ease), background .2s var(--ease);
 }
 .contact-social:hover {
-  color: var(--graphite);
-  background: rgba(255, 210, 0, .16);
-  border-color: rgba(255, 210, 0, .75);
-  box-shadow: 0 9px 20px rgba(20, 22, 26, .09);
+  color: var(--black);
+  background: var(--yellow);
+  border-color: var(--yellow);
+  box-shadow: 0 10px 24px rgba(255, 210, 0, .24);
   transform: translateY(-2px);
+}
+.contact-social:hover .contact-social__icon {
+  color: var(--white);
+  background: var(--graphite);
 }
 .contact-digital-card__actions {
   position: relative;
