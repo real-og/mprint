@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
     ['Картины на холсте', 'holsty.html']
   ];
 
-  function navGroup(title, items) {
+  function navGroup(title, anchor, items) {
     return '<div class="nav__group">' +
-      '<button type="button" class="nav__toggle" aria-expanded="false" aria-haspopup="true">' + title + ' <span class="nav__caret" aria-hidden="true">▾</span></button>' +
+      '<a class="nav__toggle" href="index.html#' + anchor + '" aria-haspopup="true">' + title + ' <span class="nav__caret" aria-hidden="true">▾</span></a>' +
       '<div class="nav__menu">' + items.map(function (item) {
         return '<a href="' + item[1] + '">' + item[0] + '</a>';
       }).join('') + '</div></div>';
@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var siteNav = document.getElementById('site-nav');
   if (siteNav) {
     siteNav.innerHTML = '<a href="index.html">Главная</a>' +
-      navGroup('Услуги', services) +
-      navGroup('Каталог', products) +
+      navGroup('Услуги', 'services', services) +
+      navGroup('Каталог', 'products', products) +
       '<a href="about.html">О нас</a>' +
       '<a href="contacts.html">Контакты</a>' +
       '<a href="#" class="btn btn--primary nav__cta" data-calc>Рассчитать стоимость</a>';
@@ -86,30 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
-
-  /* ---------- Выпадающее меню "Услуги" ---------- */
-  // На десктопе меню раскрывается по наведению (CSS), клик нужен для тач-устройств
-  // и клавиатуры; в мобильной панели меню всегда раскрыто (CSS), клик безвреден.
-  var navGroups = document.querySelectorAll('.nav__group');
-  navGroups.forEach(function (group) {
-    var toggle = group.querySelector('.nav__toggle');
-    if (!toggle) return;
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      var open = group.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  });
-  // Закрывать раскрытые группы при клике вне них
-  document.addEventListener('click', function (e) {
-    navGroups.forEach(function (group) {
-      if (group.classList.contains('is-open') && !group.contains(e.target)) {
-        group.classList.remove('is-open');
-        var t = group.querySelector('.nav__toggle');
-        if (t) t.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
 
   /* ---------- Модалка "Рассчитать стоимость" ---------- */
   var modal = document.getElementById('calc-modal');

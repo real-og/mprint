@@ -232,6 +232,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 .nav__group:nth-of-type(2) .nav__menu { left: auto; right: 0; }
 .nav__group:hover .nav__menu,
+.nav__group:focus-within .nav__menu,
 .nav__group.is-open .nav__menu { opacity: 1; visibility: visible; transform: translateY(0); }
 .nav__menu a {
   padding: 10px 12px;

@@ -177,9 +177,9 @@ const products = [
   }
 ];
 
-const navGroup = (title, items) => `<div class="nav__group"><button type="button" class="nav__toggle" aria-expanded="false" aria-haspopup="true">${title} <span class="nav__caret" aria-hidden="true">▾</span></button><div class="nav__menu">${items.map(x => `<a href="${x.file}">${x.name}</a>`).join('')}</div></div>`;
+const navGroup = (title, anchor, items) => `<div class="nav__group"><a class="nav__toggle" href="index.html#${anchor}" aria-haspopup="true">${title} <span class="nav__caret" aria-hidden="true">▾</span></a><div class="nav__menu">${items.map(x => `<a href="${x.file}">${x.name}</a>`).join('')}</div></div>`;
 
-const nav = () => `<nav class="nav" id="site-nav"><a href="index.html">Главная</a>${navGroup('Услуги', services)}${navGroup('Каталог', products)}<a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="#" class="btn btn--primary nav__cta" data-calc>Рассчитать стоимость</a></nav>`;
+const nav = () => `<nav class="nav" id="site-nav"><a href="index.html">Главная</a>${navGroup('Услуги', 'services', services)}${navGroup('Каталог', 'products', products)}<a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="#" class="btn btn--primary nav__cta" data-calc>Рассчитать стоимость</a></nav>`;
 
 const header = () => `<header class="header"><div class="container header__inner"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a>${nav()}<div class="header__actions"><a href="tel:+375000000000" class="header__phone">+375 (00) 000-00-00</a><a href="#" class="btn btn--primary" data-calc>Рассчитать стоимость</a><button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>`;
 
