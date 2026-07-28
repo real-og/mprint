@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ['Офисные таблички и указатели', 'ofisnye-tablichki-i-ukazateli.html'],
     ['Растяжки', 'rastyazhki.html'],
     ['Стикеры', 'stikery.html'],
-    ['Штендеры', 'shtendery.html'],
+    // ['Штендеры', 'shtendery.html'], // временно скрыто
     ['Картины на холсте', 'holsty.html'],
     ['Паспорт объекта', 'pasport-obekta.html'],
     ['Государственная символика', 'gosudarstvennaya-simvolika.html']
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
       '<div><h4>Услуги</h4><div class="footer__links">' + services.slice(0, 6).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
       '<div><h4>Каталог</h4><div class="footer__links">' + products.slice(0, 5).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
       '<div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a>' +
-      '<a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск</span></div></div>';
+      '<a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск, ул. Тимирязева, 74, корпус 1</span></div></div>';
   }
 
   var allDirections = services.concat(products);

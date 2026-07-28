@@ -157,6 +157,7 @@ const products = [
     benefits: ['Контурная резка любой простой формы', 'Печать от небольшого тиража', 'Матовая или глянцевая ламинация', 'Поставка на листах или отдельными наклейками', 'Помощь с подготовкой контура реза'],
     materials: ['Белая ПВХ-плёнка', 'Прозрачная плёнка', 'Матовая плёнка', 'Глянцевая ламинация', 'Матовая ламинация', 'Монтажная плёнка']
   },
+  /* Штендеры временно скрыты из каталога.
   {
     file: 'shtendery.html', name: 'Штендеры', h1: 'Уличные <mark>штендеры</mark>',
     description: 'Изготовление штендеров в Минске: переносные двусторонние рекламные конструкции с печатными панелями и сменной информацией.',
@@ -166,6 +167,7 @@ const products = [
     benefits: ['Двусторонняя рабочая поверхность', 'Устойчивая складная конструкция', 'Панели с полноцветной печатью', 'Возможность заменить рекламное изображение', 'Удобное хранение и переноска'],
     materials: ['Металлическая рама', 'ПВХ-панели', 'Композитные панели', 'Печатная плёнка', 'Ламинация', 'Сменные карманы']
   },
+  */
   {
     file: 'holsty.html', name: 'Картины на холсте', h1: 'Картины <mark>на холсте</mark>',
     description: 'Печать фотографий и картин на холсте в Минске с натяжкой на деревянный подрамник. Индивидуальные размеры и галерейная натяжка.',
@@ -199,7 +201,7 @@ const navGroup = (title, anchor, items) => `<div class="nav__group"><a class="na
 
 const nav = () => `<nav class="nav" id="site-nav"><a href="index.html">Главная</a>${navGroup('Услуги', 'services', services)}${navGroup('Каталог', 'products', products)}<a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="#" class="btn btn--primary nav__cta" data-calc>Рассчитать стоимость</a></nav>`;
 
-const header = () => `<header class="header"><div class="container header__inner"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a>${nav()}<div class="header__actions"><a href="tel:+375000000000" class="header__phone">+375 (00) 000-00-00</a><a href="#" class="btn btn--primary" data-calc>Рассчитать стоимость</a><button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>`;
+const header = () => `<header class="header"><div class="container header__inner"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a>${nav()}<div class="header__actions"><a href="tel:+375000000000" class="header__phone">+375 (00) 000-00-00</a><div class="header__socials" aria-label="Мессенджеры"><a href="https://t.me/" target="_blank" rel="noopener" aria-label="Telegram"><span aria-hidden="true">TG</span><b>Telegram</b></a><a href="viber://chat?number=%2B375000000000" aria-label="Viber"><span aria-hidden="true">VB</span><b>Viber</b></a><a href="https://wa.me/375000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><span aria-hidden="true">WA</span><b>WhatsApp</b></a></div><button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button></div></div></header>`;
 
 const options = [...services, ...products].map(x => `<option>${x.name}</option>`).join('');
 const prices = {
@@ -220,15 +222,15 @@ const prices = {
   'ofisnye-tablichki-i-ukazateli.html': 'от 20 BYN',
   'rastyazhki.html': 'от 40 BYN',
   'stikery.html': 'от 15 BYN',
-  'shtendery.html': 'от 160 BYN',
+  // 'shtendery.html': 'от 160 BYN', // временно скрыто
   'holsty.html': 'от 45 BYN',
   'pasport-obekta.html': 'от 120 BYN',
   'gosudarstvennaya-simvolika.html': 'от 80 BYN'
 };
 
-const footer = () => `<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__about"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a><p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div><div><h4>Услуги</h4><div class="footer__links">${services.slice(0, 6).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Каталог</h4><div class="footer__links">${products.slice(0, 5).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск</span></div></div></div><div class="footer__bottom"><span>© 2026 m-print.by. Все права защищены.</span><span>Рекламное производство · Минск</span></div></div></footer>`;
+const footer = () => `<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__about"><a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a><p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div><div><h4>Услуги</h4><div class="footer__links">${services.slice(0, 6).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Каталог</h4><div class="footer__links">${products.slice(0, 5).map(item => `<a href="${item.file}">${item.name}</a>`).join('')}</div></div><div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a><a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск, ул. Тимирязева, 74, корпус 1</span></div></div></div><div class="footer__bottom"><span>© 2026 m-print.by. Все права защищены.</span><span>Рекламное производство · Минск</span></div></div></footer>`;
 
-const modal = () => `<div class="modal" id="calc-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal__box"><button class="modal__close" data-close aria-label="Закрыть">×</button><h3 id="modal-title">Рассчитать стоимость</h3><p>Оставьте контакты — пришлём смету и ответим на вопросы.</p><form class="form form--plain" data-form><div class="form__success">Спасибо! Заявка отправлена — мы скоро свяжемся с вами.</div><div class="field"><label for="m-name">Ваше имя</label><input type="text" id="m-name" name="name" placeholder="Как к вам обращаться" required></div><div class="field"><label for="m-phone">Телефон</label><input type="tel" id="m-phone" name="phone" placeholder="+375 (__) ___-__-__" required></div><div class="field"><label for="m-service">Направление</label><select id="m-service" name="service"><option value="">Выберите направление</option>${options}<option>Другое</option></select></div><div class="field"><label for="m-comment">Комментарий</label><textarea id="m-comment" name="comment" placeholder="Размеры, количество, сроки"></textarea></div><button type="submit" class="btn btn--primary btn--block btn--lg">Отправить</button></form></div></div>`;
+const modal = () => `<div class="modal" id="calc-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal__box"><button class="modal__close" data-close aria-label="Закрыть">×</button><h3 id="modal-title">Рассчитать стоимость</h3><p>Оставьте контакты — пришлём смету и ответим на вопросы.</p><form class="form form--plain" data-form><div class="form__success">Спасибо! Заявка отправлена — мы скоро свяжемся с вами.</div><div class="field"><label for="m-name">Ваше имя</label><input type="text" id="m-name" name="name" placeholder="Как к вам обращаться" required></div><div class="field"><label for="m-phone">Телефон</label><input type="tel" id="m-phone" name="phone" placeholder="+375 (__) ___-__-__" required></div><div class="field"><label for="m-email">Email <span class="field__optional">необязательно</span></label><input type="email" id="m-email" name="email" placeholder="name@example.com"></div><div class="field"><label for="m-service">Направление</label><select id="m-service" name="service"><option value="">Выберите направление</option>${options}<option>Другое</option></select></div><div class="field"><label for="m-comment">Комментарий</label><textarea id="m-comment" name="comment" placeholder="Размеры, количество, сроки"></textarea></div><button type="submit" class="btn btn--primary btn--block btn--lg">Отправить</button></form></div></div>`;
 
 function page(item, category) {
   const folder = item.file.replace(/\.html$/, '').replaceAll('-', '_');
