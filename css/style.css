@@ -506,6 +506,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
+#products .direction-card:last-child { grid-column: 2; }
 .direction-card {
   position: relative;
   aspect-ratio: 1;
@@ -986,6 +987,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .cards, .gallery { grid-template-columns: repeat(2, 1fr); }
   .cards--4 { grid-template-columns: repeat(2, 1fr); }
   .direction-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #products .direction-card:last-child { grid-column: auto; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .advantages__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .advantage:nth-child(3)::before { display: none; }

@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
     ['Растяжки', 'rastyazhki.html'],
     ['Стикеры', 'stikery.html'],
     ['Штендеры', 'shtendery.html'],
-    ['Картины на холсте', 'holsty.html']
+    ['Картины на холсте', 'holsty.html'],
+    ['Паспорт объекта', 'pasport-obekta.html'],
+    ['Государственная символика', 'gosudarstvennaya-simvolika.html']
   ];
 
   function navGroup(title, anchor, items) {
