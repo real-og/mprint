@@ -277,7 +277,14 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   white-space: nowrap;
   transition: border-color .15s, background .15s, transform .15s;
 }
-.header__socials a span { color: var(--yellow-dark); font-size: 12px; }
+.header__socials img,
+.messengers img {
+  display: block;
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+}
+.header__socials img { width: 16px; height: 16px; }
 .header__socials a:hover {
   background: #fff7cc;
   border-color: var(--yellow);
