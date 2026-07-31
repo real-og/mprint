@@ -29,7 +29,11 @@
 /* ---------- Reset ---------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -2401,25 +2405,30 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     padding-right: 28px;
   }
 
+  /* Первый экран всегда закрывает оставшуюся после шапки высоту устройства. */
   .hero {
-    min-height: auto;
+    min-height: calc(100vh - 74px);
+    min-height: calc(100svh - 74px);
     isolation: isolate;
   }
 
+  /* Оставляем только небольшое спокойное золотое свечение. */
   .hero::before {
-    top: -8%;
-    right: -32%;
-    width: 110%;
-    height: 118%;
-    opacity: .62;
+    top: 8%;
+    right: -24%;
+    width: 82%;
+    height: 78%;
+    opacity: .42;
+    filter: blur(5px);
   }
 
   .hero__inner {
     position: relative;
     display: block;
-    min-height: 610px;
-    padding-top: 72px;
-    padding-bottom: 82px;
+    min-height: calc(100vh - 74px);
+    min-height: calc(100svh - 74px);
+    padding-top: 36px;
+    padding-bottom: 56px;
   }
 
   .hero__inner > div:first-child {
@@ -2476,43 +2485,8 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     line-height: 1.35;
   }
 
-  /* Фото занимает ровно ширину устройства: его холст начинается у левого
-     края viewport и заканчивается у правого, независимо от .container. */
-  .hero__visual {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: calc(50% - 50vw);
-    right: auto;
-    bottom: auto;
-    width: 100vw;
-    height: auto;
-    margin: 0;
-    aspect-ratio: auto;
-    overflow: visible;
-    opacity: .3;
-    pointer-events: none;
-    transform: translateY(-47%);
-  }
-
-  .hero__visual::before {
-    inset: 8% 0 4%;
-    opacity: .38;
-    filter: blur(48px);
-  }
-
-  .hero__visual img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    object-position: center;
-    transform: none;
-    filter: saturate(.72) contrast(1.04);
-  }
+  /* На мобильных изображение принтера полностью убрано. */
+  .hero__visual { display: none !important; }
 
   .advantages {
     margin-top: 0;
@@ -2528,20 +2502,14 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   }
 
   .hero__inner {
-    min-height: 620px;
-    padding-top: 66px;
-    padding-bottom: 72px;
+    min-height: calc(100vh - 74px);
+    min-height: calc(100svh - 74px);
+    padding-top: 32px;
+    padding-bottom: 52px;
   }
 
   .hero h1 { font-size: clamp(32px, 9.8vw, 39px); }
   .hero p { max-width: 340px; font-size: 15px; }
-
-  .hero__visual {
-    width: 100vw;
-    left: calc(50% - 50vw);
-    opacity: .26;
-    transform: translateY(-44%);
-  }
 
   .hero__actions .btn,
   .hero__actions .btn--lg {
@@ -2643,10 +2611,11 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   }
   .hero__socials-list img { width: 17px; height: 17px; flex: 0 0 auto; }
 
-  /* Первый экран растёт по содержимому после добавления быстрых контактов. */
+  /* Контент может увеличивать экран, но тёмный hero остаётся не ниже viewport. */
   .hero__inner {
-    min-height: 0;
-    padding-bottom: 62px;
+    min-height: calc(100vh - 74px);
+    min-height: calc(100svh - 74px);
+    padding-bottom: 56px;
   }
 
   /* Горизонтальная карусель преимуществ. */
@@ -2796,3 +2765,83 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 /* === END M-PRINT MOBILE INTERFACE V2 === */
 
+
+
+
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  /* Телефоны в альбомной ориентации и планшеты используют тот же чистый hero. */
+  .hero {
+    min-height: calc(100vh - 74px);
+    min-height: calc(100svh - 74px);
+  }
+
+  .hero__inner {
+    min-height: calc(100vh - 74px);
+    min-height: calc(100svh - 74px);
+    gap: 0;
+    padding: 26px 24px 64px;
+  }
+
+  .hero__visual { display: none !important; }
+
+  .hero::before {
+    top: 4%;
+    right: -18%;
+    width: 68%;
+    height: 92%;
+    opacity: .38;
+    filter: blur(5px);
+  }
+}
+
+/* ============================================================
+   M-PRINT — мобильная полировка v3
+   ============================================================ */
+@media (max-width: 1024px) {
+  /* Основной текст на главной и странице «О нас» имеет единый кегль. */
+  .about-home .about-copy,
+  .about-home .lead.about-copy,
+  .about-page .about-page-hero__copy p,
+  .about-page .about-prose p,
+  .about-page .section-head p,
+  .about-page .about-direction p,
+  .about-page .about-production__top p,
+  .about-page .about-process__item p,
+  .about-page .about-quality .lead,
+  .about-page .about-clients__grid p,
+  .about-page .about-local__grid > div:first-child > p,
+  .about-page .about-faq details p,
+  .about-page .request-copy,
+  .page-hero > .container > p,
+  .service-detail-hero__lead,
+  .service-seo__content p,
+  .contact-location__lead {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .about-home .about-copy + .about-copy { margin-top: 14px; }
+  .about-page .about-prose p + p { margin-top: 16px; }
+
+  /* Исправление короткого контактного блока на главной. */
+  .home-contact .split { gap: 32px; }
+  .home-contact .split > div { min-width: 0; }
+  .home-contact h2 {
+    max-width: 100%;
+    margin-bottom: 26px;
+    font-size: clamp(28px, 8.6vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -.025em;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .home-contact .info-list { margin-top: 0; }
+  .home-contact .info-item > div:last-child { min-width: 0; }
+  .home-contact .info-item a,
+  .home-contact .info-item p {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
+/* === END M-PRINT MOBILE POLISH V3 === */
