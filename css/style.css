@@ -2298,64 +2298,109 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .contact-location .map-embed { border-radius: 16px; }
 }
 
+/* === M-PRINT MOBILE HOME UPDATE — 2026-07-31, FINAL === */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* === M-PRINT MOBILE HOME UPDATE — 2026-07-31 === */
-@media (max-width: 760px) {
-  /* 1. Сильно более прозрачная верхняя панель */
+/* Шапка и бургер-меню используются до 1024 px, поэтому тёмная тема
+   и аккордеоны действуют во всём этом диапазоне. */
+@media (max-width: 1024px) {
   .header {
-    background: rgba(20, 22, 26, .34);
-    border-bottom-color: rgba(255, 255, 255, .08);
-    -webkit-backdrop-filter: saturate(145%) blur(18px);
-    backdrop-filter: saturate(145%) blur(18px);
+    background: var(--graphite);
+    border-bottom-color: rgba(255, 255, 255, .09);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   .header .logo b { color: var(--white); }
-  .header .logo i { color: rgba(255, 255, 255, .72); }
+  .header .logo i { color: rgba(255, 255, 255, .7); }
 
   .burger {
-    background: rgba(255, 255, 255, .07);
+    background: rgba(255, 255, 255, .06);
     border-color: rgba(255, 255, 255, .18);
   }
-
   .burger span { background: var(--white); }
 
-  /* 2. Больше боковых отступов */
+  /* Вся открытая мобильная панель продолжает цвет первого экрана. */
+  .nav.is-open {
+    background: var(--graphite);
+    border-bottom-color: rgba(255, 255, 255, .1);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, .28);
+  }
+
+  .nav.is-open > a,
+  .nav.is-open .nav__toggle {
+    color: var(--white);
+  }
+
+  .nav.is-open > a:hover,
+  .nav.is-open .nav__toggle:hover,
+  .nav.is-open > a.is-active,
+  .nav.is-open .nav__toggle.is-active {
+    color: var(--white);
+    background: rgba(255, 255, 255, .08);
+  }
+
+  /* Группы «Услуги» и «Каталог» закрыты по умолчанию. */
+  .nav.is-open .nav__group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav.is-open .nav__toggle {
+    justify-content: space-between;
+  }
+
+  .nav.is-open .nav__caret {
+    display: inline-block;
+    transform: none;
+  }
+
+  .nav.is-open .nav__menu {
+    display: none;
+    position: static;
+    min-width: 0;
+    max-height: none;
+    overflow: visible;
+    margin: 0 0 4px;
+    padding: 4px 0 7px 12px;
+    background: transparent;
+    border: 0;
+    border-left: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+  }
+
+  .nav.is-open .nav__group.is-open .nav__menu {
+    display: grid;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav.is-open .nav__group.is-open .nav__caret {
+    transform: rotate(180deg);
+  }
+
+  .nav.is-open .nav__menu a {
+    padding: 10px 12px;
+    color: rgba(255, 255, 255, .78);
+    white-space: normal;
+  }
+
+  .nav.is-open .nav__menu a:hover,
+  .nav.is-open .nav__menu a.is-active {
+    color: var(--white);
+    background: rgba(255, 255, 255, .08);
+  }
+}
+
+@media (max-width: 760px) {
   .container {
     padding-left: 28px;
     padding-right: 28px;
   }
 
-  /* 3. Больше расстояние от меню до текста */
   .hero {
     min-height: auto;
     isolation: isolate;
@@ -2366,7 +2411,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     right: -32%;
     width: 110%;
     height: 118%;
-    opacity: .72;
+    opacity: .62;
   }
 
   .hero__inner {
@@ -2383,7 +2428,6 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     max-width: 520px;
   }
 
-  /* 4. Текст немного компактнее */
   .hero .eyebrow {
     margin-bottom: 16px;
     font-size: 11px;
@@ -2404,7 +2448,6 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     line-height: 1.55;
   }
 
-  /* 5. Компактные кнопки */
   .hero__actions {
     gap: 10px;
     align-items: center;
@@ -2424,15 +2467,8 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     margin-top: 32px;
   }
 
-  .hero__stat {
-    max-width: 105px;
-  }
-
-  .hero__stat b {
-    font-size: 26px;
-    line-height: 1;
-  }
-
+  .hero__stat { max-width: 105px; }
+  .hero__stat b { font-size: 26px; line-height: 1; }
   .hero__stat span {
     display: block;
     margin-top: 5px;
@@ -2440,41 +2476,44 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     line-height: 1.35;
   }
 
-  /* 6. Принтер — полупрозрачный фон первого экрана */
+  /* Фото занимает ровно ширину устройства: его холст начинается у левого
+     края viewport и заканчивается у правого, независимо от .container. */
   .hero__visual {
     display: block;
     position: absolute;
     z-index: 1;
-    top: 6%;
-    right: -30%;
-    bottom: 2%;
-    width: 125%;
+    top: 50%;
+    left: calc(50% - 50vw);
+    right: auto;
+    bottom: auto;
+    width: 100vw;
     height: auto;
     margin: 0;
     aspect-ratio: auto;
     overflow: visible;
-    opacity: .33;
+    opacity: .3;
     pointer-events: none;
+    transform: translateY(-47%);
   }
 
   .hero__visual::before {
-    inset: 8% -4% 4% 24%;
-    opacity: .45;
+    inset: 8% 0 4%;
+    opacity: .38;
     filter: blur(48px);
   }
 
   .hero__visual img {
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     max-width: none;
     max-height: none;
     object-fit: contain;
-    object-position: right center;
+    object-position: center;
     transform: none;
     filter: saturate(.72) contrast(1.04);
   }
 
-  /* Преимущества больше не заходят на первый экран */
   .advantages {
     margin-top: 0;
     padding-top: 20px;
@@ -2494,21 +2533,14 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     padding-bottom: 72px;
   }
 
-  .hero h1 {
-    font-size: clamp(32px, 9.8vw, 39px);
-  }
-
-  .hero p {
-    max-width: 340px;
-    font-size: 15px;
-  }
+  .hero h1 { font-size: clamp(32px, 9.8vw, 39px); }
+  .hero p { max-width: 340px; font-size: 15px; }
 
   .hero__visual {
-    top: 10%;
-    right: -42%;
-    bottom: 0;
-    width: 145%;
-    opacity: .27;
+    width: 100vw;
+    left: calc(50% - 50vw);
+    opacity: .26;
+    transform: translateY(-44%);
   }
 
   .hero__actions .btn,
@@ -2518,5 +2550,4 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     font-size: 13px;
   }
 }
-/* === END M-PRINT MOBILE HOME UPDATE === */
-
+/* === END M-PRINT MOBILE HOME UPDATE — FINAL === */

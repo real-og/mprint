@@ -324,5 +324,61 @@
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+    /* Мобильные аккордеоны «Услуги» и «Каталог» внутри бургер-меню */
+    document.addEventListener('DOMContentLoaded', function () {
+      var nav = document.getElementById('site-nav');
+      var burger = document.querySelector('.burger');
+      var mobileMenu = window.matchMedia('(max-width: 1024px)');
+
+      if (!nav) return;
+
+      function collapseGroups(exceptGroup) {
+        nav.querySelectorAll('.nav__group').forEach(function (group) {
+          if (group === exceptGroup) return;
+          group.classList.remove('is-open');
+          var toggle = group.querySelector('.nav__toggle');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      function prepareGroups() {
+        nav.querySelectorAll('.nav__group').forEach(function (group) {
+          var toggle = group.querySelector('.nav__toggle');
+          if (toggle && !toggle.hasAttribute('aria-expanded')) {
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      prepareGroups();
+
+      /* Capture-фаза не даёт общему main.js закрыть весь бургер при нажатии на заголовок группы. */
+      nav.addEventListener('click', function (event) {
+        var toggle = event.target.closest('.nav__toggle');
+        if (!toggle || !mobileMenu.matches) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        var group = toggle.closest('.nav__group');
+        var willOpen = !group.classList.contains('is-open');
+
+        collapseGroups(group);
+        group.classList.toggle('is-open', willOpen);
+        toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      }, true);
+
+      if (burger) {
+        burger.addEventListener('click', function () {
+          if (!nav.classList.contains('is-open')) collapseGroups();
+        });
+      }
+
+      mobileMenu.addEventListener('change', function (event) {
+        if (!event.matches) collapseGroups();
+      });
+    });
+  </script>
 </body>
 </html>
