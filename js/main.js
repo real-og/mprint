@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function navGroup(title, anchor, items) {
     return '<div class="nav__group">' +
-      '<a class="nav__toggle" href="index.html#' + anchor + '" aria-haspopup="true">' + title + ' <span class="nav__caret" aria-hidden="true">▾</span></a>' +
+      '<a class="nav__toggle" href="index.html#' + anchor + '" aria-haspopup="true" aria-expanded="false">' + title + ' <span class="nav__caret" aria-hidden="true">▾</span></a>' +
       '<div class="nav__menu">' + items.map(function (item) {
         return '<a href="' + item[1] + '">' + item[0] + '</a>';
       }).join('') + '</div></div>';
@@ -71,23 +71,97 @@ document.addEventListener('DOMContentLoaded', function () {
     if (selected) select.value = selected;
   });
 
-  /* ---------- Мобильное меню ---------- */
+  /* ---------- Мобильная кнопка звонка ---------- */
+  var headerActions = document.querySelector('.header__actions');
   var burger = document.querySelector('.burger');
+  if (headerActions && burger && !headerActions.querySelector('.header__call-mobile')) {
+    var callButton = document.createElement('a');
+    callButton.className = 'header__call-mobile';
+    callButton.href = 'tel:+375000000000';
+    callButton.setAttribute('aria-label', 'Позвонить в m-print.by');
+    callButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.4 3.5 5.7 4.2c-.8.3-1.3 1.2-1.1 2.1 1.3 6.4 6.3 11.4 12.7 12.7.9.2 1.8-.3 2.1-1.1l.7-1.7c.3-.8 0-1.7-.7-2.1l-2.8-1.6c-.7-.4-1.5-.3-2 .3l-1.1 1.2a13.1 13.1 0 0 1-4.1-4.1l1.2-1.1c.6-.5.7-1.3.3-2L9.5 4.1c-.4-.7-1.3-1-2.1-.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Позвонить</span>';
+    headerActions.insertBefore(callButton, burger);
+  }
+
+  /* ---------- Мобильное меню и аккордеоны ---------- */
   var nav = document.querySelector('.nav');
+  var mobileMenu = window.matchMedia('(max-width: 1024px)');
+
+  function collapseNavGroups(exceptGroup) {
+    if (!nav) return;
+    nav.querySelectorAll('.nav__group').forEach(function (group) {
+      if (group === exceptGroup) return;
+      group.classList.remove('is-open');
+      var toggle = group.querySelector('.nav__toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function closeMobileNav() {
+    if (!nav || !burger) return;
+    nav.classList.remove('is-open');
+    burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    collapseNavGroups();
+  }
+
   if (burger && nav) {
     burger.addEventListener('click', function () {
       var open = nav.classList.toggle('is-open');
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (!open) collapseNavGroups();
     });
-    // Закрывать меню при клике по ссылке
-    nav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        nav.classList.remove('is-open');
-        burger.classList.remove('is-open');
-      });
+
+    nav.addEventListener('click', function (event) {
+      var toggle = event.target.closest('.nav__toggle');
+      if (toggle && mobileMenu.matches) {
+        event.preventDefault();
+        var group = toggle.closest('.nav__group');
+        var willOpen = !group.classList.contains('is-open');
+        collapseNavGroups(group);
+        group.classList.toggle('is-open', willOpen);
+        toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        return;
+      }
+
+      var link = event.target.closest('a');
+      if (link && mobileMenu.matches) closeMobileNav();
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!mobileMenu.matches || !nav.classList.contains('is-open')) return;
+      if (!event.target.closest('.header')) closeMobileNav();
+    });
+
+    mobileMenu.addEventListener('change', function (event) {
+      if (!event.matches) closeMobileNav();
     });
   }
+
+
+  /* ---------- Раскрытие карточек на главной ---------- */
+  document.querySelectorAll('[data-mobile-grid-toggle]').forEach(function (button) {
+    var grid = document.getElementById(button.getAttribute('aria-controls'));
+    var label = button.querySelector('span');
+    if (!grid || !label) return;
+
+    var showLabel = button.getAttribute('aria-controls') === 'services-grid'
+      ? 'Показать все услуги'
+      : 'Показать все изделия';
+
+    button.addEventListener('click', function () {
+      var expanded = grid.classList.toggle('is-expanded');
+      button.classList.toggle('is-expanded', expanded);
+      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      label.textContent = expanded ? 'Скрыть список' : showLabel;
+
+      if (!expanded) {
+        var section = grid.closest('section');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 
   /* ---------- Модалка "Рассчитать стоимость" ---------- */
   var modal = document.getElementById('calc-modal');

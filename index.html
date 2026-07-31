@@ -49,6 +49,20 @@
           <div class="hero__stat"><b>от 1</b><span>дня на изготовление</span></div>
           <div class="hero__stat"><b>0 Br</b><span>доставка по Минску</span></div>
         </div>
+        <div class="hero__socials" aria-label="Быстрая связь">
+          <span class="hero__socials-label">Быстрая связь</span>
+          <div class="hero__socials-list">
+            <a href="https://t.me/" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+              <img src="img/social/telegram.svg" alt="" aria-hidden="true">Telegram
+            </a>
+            <a href="viber://chat?number=%2B375000000000" aria-label="Написать в Viber">
+              <img src="img/social/viber.svg" alt="" aria-hidden="true">Viber
+            </a>
+            <a href="https://wa.me/375000000000" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+              <img src="img/social/whatsapp.svg" alt="" aria-hidden="true">WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
       <div class="hero__visual">
         <img
@@ -88,7 +102,7 @@
   <section class="section section--gray direction-section" id="services">
     <div class="container">
       <div class="section-head"><span class="eyebrow">Услуги</span><h2>Печать и оформление</h2><p>От печати отдельного материала до комплексного оформления объекта.</p></div>
-      <div class="direction-grid">
+      <div class="direction-grid mobile-collapsible-grid" id="services-grid">
         <a href="shirokoformatnaya-pechat.html" class="direction-card"><img class="direction-card__image" src="img/shirokoformatnaya_pechat_card.webp" alt="Широкоформатный принтер в работе" loading="lazy"><h3>Широкоформатная печать</h3><span class="direction-card__arrow">↗</span></a>
         <a href="oformlenie-mest-prodazh.html" class="direction-card"><img class="direction-card__image" src="img/oformlenie_mest_prodazh_card.webp" alt="Оформление места продаж" loading="lazy"><h3>Оформление мест продаж</h3><span class="direction-card__arrow">↗</span></a>
         <a href="oformlenie-vitrin.html" class="direction-card"><img class="direction-card__image" src="img/oformlenie_vitrin_card.webp" alt="Монтаж графики на витрину" loading="lazy"><h3>Оформление витрин</h3><span class="direction-card__arrow">↗</span></a>
@@ -101,6 +115,9 @@
         <a href="bannernaya-tkan.html" class="direction-card"><img class="direction-card__image" src="img/bannernaya_tkan_card.webp" alt="Печать на баннерной ткани" loading="lazy"><h3>Печать на баннерной ткани</h3><span class="direction-card__arrow">↗</span></a>
         <a href="nanesenie-izobrazheniya-na-pvh.html" class="direction-card"><img class="direction-card__image" src="img/pechat_na_pvh_card.webp" alt="Изображение на листе ПВХ" loading="lazy"><h3>Нанесение изображения на ПВХ</h3><span class="direction-card__arrow">↗</span></a>
       </div>
+      <button class="direction-toggle" type="button" data-mobile-grid-toggle aria-controls="services-grid" aria-expanded="false">
+        <span>Показать все услуги</span><i aria-hidden="true">↓</i>
+      </button>
     </div>
   </section>
 
@@ -108,7 +125,7 @@
   <section class="section direction-section" id="products">
     <div class="container">
       <div class="section-head"><span class="eyebrow">Каталог</span><h2>Готовые изделия</h2><p>Рекламные и информационные конструкции под ваши размеры, стиль и задачу.</p></div>
-      <div class="direction-grid">
+      <div class="direction-grid mobile-collapsible-grid" id="products-grid">
         <a href="tablichki-ukazateli.html" class="direction-card"><img class="direction-card__image" src="img/tablichki_card.webp" alt="Настенные таблички и указатели" loading="lazy"><h3>Таблички</h3><span class="direction-card__arrow">↗</span></a>
         <a href="roll-up.html" class="direction-card"><img class="direction-card__image" src="img/rollup_card.webp" alt="Мобильный стенд роллап" loading="lazy"><h3>Роллапы</h3><span class="direction-card__arrow">↗</span></a>
         <a href="informatsionnye-stendy.html" class="direction-card"><img class="direction-card__image" src="img/informacionnye_stendy_card.webp" alt="Информационный стенд с карманами" loading="lazy"><h3>Информационные стенды</h3><span class="direction-card__arrow">↗</span></a>
@@ -122,6 +139,9 @@
         <a href="holsty.html" class="direction-card"><img class="direction-card__image" src="img/holst_card.webp" alt="Картина на холсте в современном интерьере" loading="lazy"><h3>Картины на холсте</h3><span class="direction-card__arrow">↗</span></a>
         <a href="pasport-obekta.html" class="direction-card"><img class="direction-card__image" src="img/pasport_obekta_card.webp" alt="Паспорт строительного объекта с информацией о работах" loading="lazy"><h3>Паспорт объекта</h3><span class="direction-card__arrow">↗</span></a>
       </div>
+      <button class="direction-toggle" type="button" data-mobile-grid-toggle aria-controls="products-grid" aria-expanded="false">
+        <span>Показать все изделия</span><i aria-hidden="true">↓</i>
+      </button>
     </div>
   </section>
 
@@ -324,61 +344,5 @@
   </div>
 
   <script src="js/main.js"></script>
-  <script>
-    /* Мобильные аккордеоны «Услуги» и «Каталог» внутри бургер-меню */
-    document.addEventListener('DOMContentLoaded', function () {
-      var nav = document.getElementById('site-nav');
-      var burger = document.querySelector('.burger');
-      var mobileMenu = window.matchMedia('(max-width: 1024px)');
-
-      if (!nav) return;
-
-      function collapseGroups(exceptGroup) {
-        nav.querySelectorAll('.nav__group').forEach(function (group) {
-          if (group === exceptGroup) return;
-          group.classList.remove('is-open');
-          var toggle = group.querySelector('.nav__toggle');
-          if (toggle) toggle.setAttribute('aria-expanded', 'false');
-        });
-      }
-
-      function prepareGroups() {
-        nav.querySelectorAll('.nav__group').forEach(function (group) {
-          var toggle = group.querySelector('.nav__toggle');
-          if (toggle && !toggle.hasAttribute('aria-expanded')) {
-            toggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      }
-
-      prepareGroups();
-
-      /* Capture-фаза не даёт общему main.js закрыть весь бургер при нажатии на заголовок группы. */
-      nav.addEventListener('click', function (event) {
-        var toggle = event.target.closest('.nav__toggle');
-        if (!toggle || !mobileMenu.matches) return;
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        var group = toggle.closest('.nav__group');
-        var willOpen = !group.classList.contains('is-open');
-
-        collapseGroups(group);
-        group.classList.toggle('is-open', willOpen);
-        toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-      }, true);
-
-      if (burger) {
-        burger.addEventListener('click', function () {
-          if (!nav.classList.contains('is-open')) collapseGroups();
-        });
-      }
-
-      mobileMenu.addEventListener('change', function (event) {
-        if (!event.matches) collapseGroups();
-      });
-    });
-  </script>
 </body>
 </html>
