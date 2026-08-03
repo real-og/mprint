@@ -2906,7 +2906,13 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
     -webkit-backdrop-filter: saturate(135%) blur(14px);
     backdrop-filter: saturate(135%) blur(14px);
   }
-  .home-page .header.is-scrolled { background: rgba(15, 17, 20, .82); }
+  .header.is-scrolled,
+  .home-page .header.is-scrolled {
+    background: rgba(15, 17, 20, .52);
+    border-bottom-color: rgba(255, 255, 255, .1);
+    -webkit-backdrop-filter: saturate(145%) blur(18px);
+    backdrop-filter: saturate(145%) blur(18px);
+  }
 
   .home-page .hero,
   .home-page .hero__inner {
@@ -3153,6 +3159,22 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 .overview-cta h2 { max-width: 720px; color: var(--white); }
 .overview-cta p { max-width: 700px; margin-top: 14px; color: var(--gray-200); }
 .overview-cta__actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 12px; }
+
+@media (min-width: 761px) {
+  .overview-cta__actions .btn[download] {
+    color: var(--yellow);
+    background: rgba(255, 210, 0, .08);
+    border-color: rgba(255, 210, 0, .72);
+    box-shadow: inset 0 0 0 1px rgba(255, 210, 0, .12), 0 8px 24px rgba(0, 0, 0, .12);
+  }
+  .overview-cta__actions .btn[download]:hover {
+    color: var(--black);
+    background: var(--yellow);
+    border-color: var(--yellow);
+    box-shadow: 0 10px 28px rgba(255, 210, 0, .28);
+    transform: translateY(-2px);
+  }
+}
 
 .overview-seo__layout {
   display: grid;
