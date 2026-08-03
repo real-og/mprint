@@ -3574,3 +3574,47 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .overview-seo__content article { padding: 24px 23px 24px 27px; border-radius: 16px; }
   .overview-seo__content article::before { top: 24px; bottom: 24px; }
 }
+
+/* ============================================================
+   Единая мобильная шапка для страниц с тёмным первым экраном
+   ============================================================ */
+@media (max-width: 760px) {
+  .dark-hero-page .header {
+    margin-bottom: -74px;
+    background: rgba(10, 12, 15, .16);
+    border-bottom-color: rgba(255, 255, 255, .07);
+    -webkit-backdrop-filter: saturate(130%) blur(14px);
+    backdrop-filter: saturate(130%) blur(14px);
+  }
+
+  .dark-hero-page .header.is-scrolled {
+    background: rgba(10, 12, 15, .42);
+    border-bottom-color: rgba(255, 255, 255, .09);
+    -webkit-backdrop-filter: saturate(140%) blur(18px);
+    backdrop-filter: saturate(140%) blur(18px);
+  }
+
+  /* Компенсация высоты шапки, которая теперь лежит поверх hero. */
+  .dark-hero-page .overview-hero { padding-top: 94px; }
+  .dark-hero-page .about-page-hero { padding-top: 98px; }
+  .dark-hero-page .contact-page-hero { padding-top: 96px; }
+
+  /* Более спокойное золотое свечение на небольших экранах. */
+  .home-page .hero::before {
+    background: radial-gradient(closest-side, rgba(255, 210, 0, .32), rgba(255, 210, 0, .08) 52%, transparent 78%);
+    opacity: .78;
+  }
+  .overview-hero::before {
+    top: -34%;
+    right: -34%;
+    width: 92%;
+    height: 145%;
+    background: radial-gradient(closest-side, rgba(255, 210, 0, .2), transparent 72%);
+  }
+  .about-page-hero::before {
+    background: radial-gradient(circle, rgba(255, 210, 0, .14), transparent 68%);
+  }
+  .contact-digital-card::after {
+    background: radial-gradient(circle, rgba(255, 210, 0, .16), transparent 68%);
+  }
+}
