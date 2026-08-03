@@ -2925,6 +2925,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
    Обзорные страницы «Услуги» и «Каталог»
    ============================================================ */
 .nav__menu .nav__overview-link {
+  display: none;
   margin-bottom: 4px;
   color: var(--black);
   background: #fff7cc;
@@ -3164,6 +3165,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 
 @media (max-width: 1024px) {
   .nav.is-open .nav__menu .nav__overview-link {
+    display: block;
     color: var(--yellow);
     background: rgba(255, 210, 0, .1);
     border-color: rgba(255, 210, 0, .18);
@@ -3442,6 +3444,25 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .overview-hero__visual .overview-hero__facts div:first-child { padding-left: 0; border-left: 0; }
   .overview-hero__visual .overview-hero__facts strong { display: block; margin-bottom: 7px; font-size: 24px; }
   .overview-hero__visual .overview-hero__facts span { display: block; font-size: 11px; line-height: 1.35; }
+  .overview-hero__copy .overview-hero__panel {
+    max-width: 640px;
+    margin-top: 34px;
+    padding: 17px 20px;
+    background: rgba(35, 38, 43, .82);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .2);
+  }
+  .overview-hero__copy .overview-hero__panel > span { margin-bottom: 10px; }
+  .overview-hero__copy .overview-hero__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .overview-hero__copy .overview-hero__facts div {
+    display: block;
+    min-width: 0;
+    padding: 9px 14px;
+    border-top: 0;
+    border-left: 1px solid rgba(255, 255, 255, .11);
+  }
+  .overview-hero__copy .overview-hero__facts div:first-child { padding-left: 0; border-left: 0; }
+  .overview-hero__copy .overview-hero__facts strong { display: block; margin-bottom: 7px; font-size: 24px; }
+  .overview-hero__copy .overview-hero__facts span { display: block; font-size: 11px; line-height: 1.35; }
 
   .overview-directory { padding: 118px 0 126px; }
   .overview-grid {
@@ -3509,6 +3530,8 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 
 @media (max-width: 1024px) {
+  .overview-hero__visual { display: none; }
+  .overview-hero__copy .overview-hero__panel { margin-top: 32px; }
   .overview-hero__visual .overview-hero__panel { position: static; }
   .overview-showcase { display: none; }
   .overview-directory__head { align-items: flex-start; }
