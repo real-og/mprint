@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
     ['Государственная символика', 'gosudarstvennaya-simvolika.html']
   ];
 
-  function navGroup(title, anchor, items) {
+  function navGroup(title, page, overviewLabel, items) {
     return '<div class="nav__group">' +
-      '<a class="nav__toggle" href="index.html#' + anchor + '" aria-haspopup="true" aria-expanded="false">' + title + ' <span class="nav__caret" aria-hidden="true">▾</span></a>' +
-      '<div class="nav__menu">' + items.map(function (item) {
+      '<a class="nav__toggle" href="' + page + '" aria-haspopup="true" aria-expanded="false">' + title + ' <span class="nav__caret" aria-hidden="true">▾</span></a>' +
+      '<div class="nav__menu"><a class="nav__overview-link" href="' + page + '">' + overviewLabel + '</a>' + items.map(function (item) {
         return '<a href="' + item[1] + '">' + item[0] + '</a>';
       }).join('') + '</div></div>';
   }
@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var siteNav = document.getElementById('site-nav');
   if (siteNav) {
     siteNav.innerHTML = '<a href="index.html">Главная</a>' +
-      navGroup('Услуги', 'services', services) +
-      navGroup('Каталог', 'products', products) +
+      navGroup('Услуги', 'services.html', 'Все услуги', services) +
+      navGroup('Каталог', 'catalog.html', 'Весь каталог', products) +
       '<a href="about.html">О нас</a>' +
       '<a href="contacts.html">Контакты</a>' +
       '<a href="#" class="btn btn--primary nav__cta" data-calc>Рассчитать стоимость</a>';
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
     footerGrid.innerHTML = '<div class="footer__about">' +
       '<a href="index.html" class="logo"><span class="logo__mark"><span>m</span></span><span><b>m-print</b><i>.by</i></span></a>' +
       '<p>Широкоформатная печать и рекламное производство в Минске: от макета до готового изделия.</p></div>' +
-      '<div><h4>Услуги</h4><div class="footer__links">' + services.slice(0, 6).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
-      '<div><h4>Каталог</h4><div class="footer__links">' + products.slice(0, 5).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
+      '<div><h4><a href="services.html">Услуги</a></h4><div class="footer__links"><a href="services.html">Все услуги</a>' + services.slice(0, 6).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
+      '<div><h4><a href="catalog.html">Каталог</a></h4><div class="footer__links"><a href="catalog.html">Весь каталог</a>' + products.slice(0, 5).map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') + '</div></div>' +
       '<div><h4>Контакты</h4><div class="footer__links"><a href="about.html">О нас</a><a href="contacts.html">Контакты</a>' +
       '<a href="tel:+375000000000">+375 (00) 000-00-00</a><a href="mailto:info@m-print.by">info@m-print.by</a><span style="color:var(--gray-500);font-size:15px">г. Минск, ул. Тимирязева, 74, корпус 1</span></div></div>';
   }
