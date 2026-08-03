@@ -1240,8 +1240,9 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
 }
 .about-intro__grid > div:first-child { position: sticky; top: 112px; }
 .about-prose { max-width: 760px; }
+.about-prose p { color: var(--text-muted); }
 .about-prose p + p { margin-top: 20px; }
-.about-prose .lead { color: var(--text); }
+.about-prose .lead { color: var(--text-muted); }
 
 .about-directions__grid {
   display: grid;
@@ -1408,7 +1409,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   gap: 70px;
   align-items: center;
 }
-.about-local__grid .lead { margin: 18px 0; color: var(--text); }
+.about-local__grid .lead { margin: 18px 0; color: var(--text-muted); }
 .about-local__grid > div:first-child > p:not(.lead) { margin-bottom: 28px; color: var(--text-muted); }
 .about-local__panel {
   padding: 34px;
@@ -2891,3 +2892,31 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   }
 }
 /* === END M-PRINT MOBILE POLISH V3 === */
+
+/* ============================================================
+   M-PRINT — мобильная прозрачная шапка и компактный прайс
+   ============================================================ */
+@media (max-width: 760px) {
+  /* На главной шапка лежит поверх тёмного hero, поэтому прозрачность
+     выглядит естественно и не даёт серой полосы при первом открытии. */
+  .home-page .header {
+    margin-bottom: -74px;
+    background: rgba(15, 17, 20, .48);
+    border-bottom-color: rgba(255, 255, 255, .09);
+    -webkit-backdrop-filter: saturate(135%) blur(14px);
+    backdrop-filter: saturate(135%) blur(14px);
+  }
+  .home-page .header.is-scrolled { background: rgba(15, 17, 20, .82); }
+
+  .home-page .hero,
+  .home-page .hero__inner {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .home-page .hero__inner { padding-top: 106px; }
+
+  .home-price-bar__inner .btn {
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+}

@@ -5,6 +5,16 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* ---------- Прозрачная мобильная шапка ---------- */
+  var pageHeader = document.querySelector('.header');
+  if (pageHeader) {
+    var syncHeaderState = function () {
+      pageHeader.classList.toggle('is-scrolled', window.scrollY > 20);
+    };
+    syncHeaderState();
+    window.addEventListener('scroll', syncHeaderState, { passive: true });
+  }
+
   /* ---------- Единая навигация и список направлений ---------- */
   var services = [
     ['Широкоформатная печать', 'shirokoformatnaya-pechat.html'],
